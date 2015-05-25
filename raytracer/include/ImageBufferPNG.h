@@ -1,0 +1,6 @@
+class ImageBufferPNG
+{
+public:
+private:
+    
+};
