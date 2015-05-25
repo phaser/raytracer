@@ -1,0 +1,6 @@
+[submodule "KRAL"]
+	path = KRAL
+	url = https://github.com/phaser/KRAL
+[submodule "KRAL_libs"]
+	path = KRAL_libs
+	url = https://github.com/phaser/KRAL_libs
