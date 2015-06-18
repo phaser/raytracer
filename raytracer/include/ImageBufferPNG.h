@@ -14,6 +14,8 @@ public:
     ~ImageBufferPNG();
     void SaveToPngFile(const char* file) const;
     void SetPixel(uint16_t x, uint16_t y, uint32_t color);
+    uint16_t GetWidth() { return width; }
+    uint16_t GetHeight() { return height; }
 private:
     std::unique_ptr<Pixel> imgBuffer;
     uint16_t width, height;
