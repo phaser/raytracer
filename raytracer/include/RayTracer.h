@@ -2,20 +2,16 @@
 #include <string>
 #include <memory>
 
-class ImageBufferPNG;
+class World;
+class Ray;
+class RGBColor;
 
 class RayTracer
 {
 public:
-    RayTracer();
-    RayTracer(const std::string& outputFileName, const std::string& sceneFileName);
+    RayTracer(World* world);
     ~RayTracer();
-    void InitImageBuffer(uint16_t width, uint16_t height);
-    void SetOutputFileName(const std::string& outputFileName);
-    std::string GetOutputFileName() const;
-    void RayTrace();
+    virtual RGBColor TraceRay(const Ray& ray) const;
 private:
-    std::string outputFileName;
-    std::string sceneFileName;
-    ImageBufferPNG* imgBuffer;
+    World* world;
 };

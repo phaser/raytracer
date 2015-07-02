@@ -1,2 +1,7 @@
 # raytracer
-Trying to learn how raytracers work
+
+After clone do:
+    git submodule init
+    git submodule update
+
+... to init all the submodules.
