@@ -26,3 +26,17 @@ add_target (raytracer-osx
     COMPILER_ARGS_RELEASE
         "-O4 -Wall -DPLATFORM_OSX -std=c++11 -stdlib=libc++"
 )
+
+add_target (raytracer-unix
+    INHERIT         __DEFAULT
+    PLATFORM        osx
+    PROJECT_TYPE    "Unix Makefiles"
+    CUSTOM_ARGS
+        "-Wdev"
+        " -DRUNTIME_DIR=debug"
+        " -DTESTS=True"
+    COMPILER_ARGS_DEBUG
+        "-g -O0 -Wall -DPLATFORM_OSX -std=c++11 -stdlib=libc++" 
+    COMPILER_ARGS_RELEASE
+        "-O4 -Wall -DPLATFORM_OSX -std=c++11 -stdlib=libc++"
+)

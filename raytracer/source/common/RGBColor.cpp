@@ -11,3 +11,7 @@ RGBColor::RGBColor(const glm::vec3& color)
 {
 }
 
+glm::vec3 RGBColor::GetRGBComponents() const
+{
+    return this->color;
+}

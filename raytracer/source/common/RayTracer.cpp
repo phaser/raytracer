@@ -14,5 +14,5 @@ RayTracer::~RayTracer()
 
 RGBColor RayTracer::TraceRay(const Ray& ray) const
 {
-    
+    return RGBColor();
 }
