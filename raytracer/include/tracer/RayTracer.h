@@ -12,6 +12,6 @@ public:
     RayTracer(World* world);
     ~RayTracer();
     virtual RGBColor TraceRay(const Ray& ray) const;
-private:
+protected:
     World* world;
 };

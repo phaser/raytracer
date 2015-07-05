@@ -1,4 +1,4 @@
-#include <RayTracer.h>
+#include <tracer/RayTracer.h>
 #include <ImageBufferPNG.h>
 #include <Ray.h>
 #include <World.h>
