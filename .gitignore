@@ -28,3 +28,4 @@
 *.app
 
 projects
+CMakeLists.txt.user
