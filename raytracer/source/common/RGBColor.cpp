@@ -20,9 +20,10 @@ glm::vec3 RGBColor::GetRGBComponents() const
 
 uint32_t RGBColor::GetRGBAIntPacked() const
 {
-    uint32_t col = 0xFF;
-    col = col | ((uint32_t)(color.x * 0xFF) << 24);
-    col = col | ((uint32_t)(color.y * 0xFF) << 16);
-    col = col | ((uint32_t)(color.z * 0xFF) << 8);
+    uint32_t col = 0;
+    col = col | ((uint32_t)(color.x * 0xFF));
+    col = col | ((uint32_t)(color.y * 0xFF) << 8);
+    col = col | ((uint32_t)(color.z * 0xFF) << 16);
+    col = col | (0xFF << 24);
     return col;
 }
