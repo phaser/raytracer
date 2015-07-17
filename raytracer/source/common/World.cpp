@@ -5,7 +5,11 @@
 #include <Ray.h>
 
 World::World()
-    : outputFileName(""), sceneFileName(""), imgBuffer(nullptr), vp(nullptr)
+    : outputFileName("")
+    , sceneFileName("")
+    , imgBuffer(nullptr)
+    , vp(nullptr)
+    , backColor(RGBColor::black)
 {    
 }
 
@@ -63,4 +67,19 @@ void World::Build()
 void World::DisplayPixel(uint16_t i, uint16_t j, const RGBColor& color)
 {
     imgBuffer->SetPixel(i, j, color.GetRGBAIntPacked());
+}
+
+RGBColor World::GetBackground()
+{
+    return this->backColor;
+}
+
+void World::AddObject(GeometricObject* obj)
+{
+    objects.push_back(obj);
+}
+
+std::vector<GeometricObject*>& World::GetObjects()
+{
+    return objects;
 }

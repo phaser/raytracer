@@ -16,6 +16,6 @@ RGBColor SingleSphere::TraceRay(const Ray& ray) const
     if (this->world->sphere.Hit(ray, t, sr))
         return RGBColor::red;
     else
-        return RGBColor::black;
+        return world->GetBackground();
 }
 
