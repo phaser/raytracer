@@ -30,7 +30,7 @@ RGBColor MultiObjects::TraceRay(const Ray& ray) const
     
     if (obj_min != nullptr)
     {
-        
+        return obj_min->GetBaseColor();
     }
     return RGBColor::black;
 }

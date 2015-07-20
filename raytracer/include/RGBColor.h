@@ -6,6 +6,7 @@ class RGBColor
 public:
     static RGBColor black;
     static RGBColor red;
+    static RGBColor yellow;
     RGBColor();
     RGBColor(const glm::vec3& color);
     glm::vec3 GetRGBComponents() const;

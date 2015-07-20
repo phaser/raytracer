@@ -3,7 +3,7 @@
 #include <glm/glm.hpp>
 #include <RGBColor.h>
 
-class Sphere : GeometricObject
+class Sphere : public GeometricObject
 {
 public:
     RGBColor baseColor;

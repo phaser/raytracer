@@ -1,7 +1,7 @@
 #include <World.h>
 #include <ImageBufferPNG.h>
 #include <ViewPlane.h>
-#include <tracer/SingleSphere.h>
+#include <tracer/MultiObjects.h>
 #include <Ray.h>
 
 World::World()
@@ -58,10 +58,20 @@ void World::Build()
        .SetHeight(480)
        .SetPixelSize(1.f);
     imgBuffer = new ImageBufferPNG(vp->GetWidth(), vp->GetHeight());
-    tracerPtr = new SingleSphere(this);
+    tracerPtr = new MultiObjects(this);
     sphere.SetCenter(glm::vec3(0.f, 0.f, 0.f));
     sphere.SetRadius(85.0);
-    outputFileName = "SingleSphere.png";
+    Sphere *msphere = new Sphere();
+    msphere->SetCenter(glm::vec3(0.f, -10.f, 0.f));
+    msphere->SetRadius(85.0);
+    msphere->baseColor = RGBColor::red;
+    this->AddObject(msphere);
+    msphere = new Sphere();
+    msphere->SetCenter(glm::vec3(0.f, 40.f, 0.f));
+    msphere->SetRadius(55.f);
+    msphere->baseColor = RGBColor::yellow;
+    this->AddObject(msphere);
+    outputFileName = "MultiObject.png";
 }
 
 void World::DisplayPixel(uint16_t i, uint16_t j, const RGBColor& color)

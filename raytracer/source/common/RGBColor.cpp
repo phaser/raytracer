@@ -2,6 +2,7 @@
 
 RGBColor RGBColor::black(glm::vec3(0.f, 0.f, 0.f));
 RGBColor RGBColor::red(glm::vec3(1.f, 0.f, 0.f));
+RGBColor RGBColor::yellow(glm::vec3(0.5, 0.5, 0.f));
 
 RGBColor::RGBColor()
     : color(glm::vec3(0.f, 0.f, 0.f))
