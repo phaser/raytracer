@@ -34,17 +34,23 @@ void World::RenderScene()
 {
     RGBColor pixel_color;
     Ray ray;
-    double zw = 100.0;
+    double cam_zw = 100.0;
+    double vp_zw = 0.0;
     double x, y;
     
-    ray.d = glm::vec3(0, 0, -1);
+    glm::vec3 orig(0.f, 0.f, cam_zw);
+    ray.o = orig;
     
     for (int i = 0; i < vp->GetWidth(); i++)
     for (int j = 0; j < vp->GetHeight(); j++)
     {
         x = vp->GetPixelSize() * (i - 0.5 * (vp->GetWidth() - 1.0));
         y = vp->GetPixelSize() * (j - 0.5 * (vp->GetHeight() - 1.0));
-        ray.o = glm::vec3(x, y, zw);
+        glm::vec3 dir(x, y, vp_zw);
+        glm::vec3 ndir = dir - orig;
+        ndir = glm::normalize(ndir);
+        ray.d = ndir;
+        
         pixel_color = tracerPtr->TraceRay(ray);
         DisplayPixel(i, j, pixel_color);
     }
@@ -62,13 +68,13 @@ void World::Build()
     sphere.SetCenter(glm::vec3(0.f, 0.f, 0.f));
     sphere.SetRadius(85.0);
     Sphere *msphere = new Sphere();
-    msphere->SetCenter(glm::vec3(0.f, -10.f, 0.f));
+    msphere->SetCenter(glm::vec3(0.f, -50.f, -50.f));
     msphere->SetRadius(85.0);
     msphere->baseColor = RGBColor::red;
     this->AddObject(msphere);
     msphere = new Sphere();
-    msphere->SetCenter(glm::vec3(0.f, 40.f, 0.f));
-    msphere->SetRadius(55.f);
+    msphere->SetCenter(glm::vec3(10.f, 40.f, -50.f));
+    msphere->SetRadius(65.f);
     msphere->baseColor = RGBColor::yellow;
     this->AddObject(msphere);
     outputFileName = "MultiObject.png";
