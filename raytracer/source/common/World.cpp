@@ -79,7 +79,7 @@ void World::Build()
     msphere->SetRadius(65.f);
     msphere->baseColor = RGBColor::yellow;
     this->AddObject(msphere);
-    Plane* plane = new Plane(glm::vec3(0.f, -10.f, -10.f), glm::vec3(0.f, -1.0f, 0.f));
+    Plane* plane = new Plane(glm::vec3(0.f, 50.f, -10.f), glm::vec3(0.f, -1.0f, 0.f));
     this->AddObject(plane);
     outputFileName = "MultiObject.png";
 }

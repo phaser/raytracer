@@ -20,14 +20,14 @@ Plane::Plane(const glm::vec3& point, const glm::vec3& norm)
 bool Plane::Hit(const Ray& ray, double& tmin, HitRec& hr) const
 {
     glm::vec3 tmp = point - ray.o;
-    double a = glm::dot(glm::normalize(tmp), norm);
+    double a = glm::dot(tmp, norm);
     double b = glm::dot(ray.d, norm);
     double t = a / b;
     if (t > kEpsilon)
     {
         tmin = t;
         hr.normal = norm;
-        hr.hitPoint = ray.o + (float)t * ray.d;
+        hr.hitPoint = ray.o + (float)tmin * ray.d;
         return true;
     }
     return false;
