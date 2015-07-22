@@ -3,6 +3,8 @@
 #include <ViewPlane.h>
 #include <tracer/MultiObjects.h>
 #include <Ray.h>
+#include <geom/Plane.h>
+
 
 World::World()
     : outputFileName("")
@@ -77,6 +79,8 @@ void World::Build()
     msphere->SetRadius(65.f);
     msphere->baseColor = RGBColor::yellow;
     this->AddObject(msphere);
+    Plane* plane = new Plane(glm::vec3(0.f, -10.f, -10.f), glm::vec3(0.f, -1.0f, 0.f));
+    this->AddObject(plane);
     outputFileName = "MultiObject.png";
 }
 
