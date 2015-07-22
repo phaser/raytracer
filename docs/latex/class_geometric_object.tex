@@ -1,0 +1,52 @@
+\hypertarget{class_geometric_object}{\section{Geometric\-Object Class Reference}
+\label{class_geometric_object}\index{Geometric\-Object@{Geometric\-Object}}
+}
+
+
+{\ttfamily \#include $<$Geometric\-Object.\-h$>$}
+
+Inheritance diagram for Geometric\-Object\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_geometric_object}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \hyperlink{class_geometric_object_a6872aae2052bf80cdc0bd87191630b18}{Hit} (const \hyperlink{class_ray}{Ray} \&ray, double \&tmin, \hyperlink{class_hit_rec}{Hit\-Rec} \&hr) const =0
+\item 
+virtual \hyperlink{class_r_g_b_color}{R\-G\-B\-Color} \hyperlink{class_geometric_object_a5971a505ae42f3c916b1f5428b4b3ce1}{Get\-Base\-Color} ()=0
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_geometric_object_a5971a505ae42f3c916b1f5428b4b3ce1}{\index{Geometric\-Object@{Geometric\-Object}!Get\-Base\-Color@{Get\-Base\-Color}}
+\index{Get\-Base\-Color@{Get\-Base\-Color}!GeometricObject@{Geometric\-Object}}
+\subsubsection[{Get\-Base\-Color}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf R\-G\-B\-Color} Geometric\-Object\-::\-Get\-Base\-Color (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_geometric_object_a5971a505ae42f3c916b1f5428b4b3ce1}
+
+
+Implemented in \hyperlink{class_sphere_a1a1446f19a193f966cb04704faa3c3e8}{Sphere}.
+
+\hypertarget{class_geometric_object_a6872aae2052bf80cdc0bd87191630b18}{\index{Geometric\-Object@{Geometric\-Object}!Hit@{Hit}}
+\index{Hit@{Hit}!GeometricObject@{Geometric\-Object}}
+\subsubsection[{Hit}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Geometric\-Object\-::\-Hit (
+\begin{DoxyParamCaption}
+\item[{const {\bf Ray} \&}]{ray, }
+\item[{double \&}]{tmin, }
+\item[{{\bf Hit\-Rec} \&}]{hr}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_geometric_object_a6872aae2052bf80cdc0bd87191630b18}
+
+
+Implemented in \hyperlink{class_sphere_abfe41f348343d7d1dd4a6e5c384c615d}{Sphere}, and \hyperlink{class_plane_a51cf933b7cc15b48fa155705d060c541}{Plane}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+raytracer/include/geom/\hyperlink{_geometric_object_8h}{Geometric\-Object.\-h}\end{DoxyCompactItemize}
