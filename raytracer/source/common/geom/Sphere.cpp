@@ -26,8 +26,9 @@ bool Sphere::Hit(const Ray& ray, double& tmin, HitRec& hr) const
         if (t > kEpsilon)
         {
             tmin = t;
-            hr.normal = (temp + static_cast<float>(t) * ray.d) * static_cast<float>((1.0f/radius));
+            //hr.normal = (temp + static_cast<float>(t) * ray.d) * static_cast<float>((1.0f/radius));
             hr.hitPoint = ray.o + static_cast<float>(t) * ray.d;
+            hr.normal = glm::normalize(hr.hitPoint - center);
             return true;
         }
         
@@ -35,8 +36,9 @@ bool Sphere::Hit(const Ray& ray, double& tmin, HitRec& hr) const
         if (t > kEpsilon)
         {
             tmin = t;
-            hr.normal = (temp + static_cast<float>(t) * ray.d) * static_cast<float>((1.0f/radius));
+            //hr.normal = (temp + static_cast<float>(t) * ray.d) * static_cast<float>((1.0f/radius));
             hr.hitPoint = ray.o + static_cast<float>(t) * ray.d;
+            hr.normal = glm::normalize(hr.hitPoint - center);
             return true;
         }
     }

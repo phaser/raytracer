@@ -59,6 +59,7 @@ void World::RenderScene()
     imgBuffer->SaveToPngFile(outputFileName.c_str());
 }
 
+/** \brief The build function is used to create all the objects in the scene. */
 void World::Build()
 {
     vp = new ViewPlane();
@@ -67,6 +68,7 @@ void World::Build()
        .SetPixelSize(1.f);
     imgBuffer = new ImageBufferPNG(vp->GetWidth(), vp->GetHeight());
     tracerPtr = new MultiObjects(this);
+    
     sphere.SetCenter(glm::vec3(0.f, 0.f, 0.f));
     sphere.SetRadius(85.0);
     Sphere *msphere = new Sphere();
@@ -81,9 +83,18 @@ void World::Build()
     this->AddObject(msphere);
     Plane* plane = new Plane(glm::vec3(0.f, 50.f, -10.f), glm::vec3(0.f, -1.0f, 0.f));
     this->AddObject(plane);
+    
+    Light light;
+    light.SetPosition(glm::vec3(10.f, -10.f, 10.f));
+    light.SetColor(RGBColor(glm::vec3(0.f, 0.2f, 0.3f)));
+    this->AddLight(light);
+    
     outputFileName = "MultiObject.png";
 }
 
+/** \brief It is a separate function because it should be used to perform gamma correction. Right now
+  *        it doesn't.
+  */
 void World::DisplayPixel(uint16_t i, uint16_t j, const RGBColor& color)
 {
     imgBuffer->SetPixel(i, j, color.GetRGBAIntPacked());
@@ -102,4 +113,14 @@ void World::AddObject(GeometricObject* obj)
 std::vector<GeometricObject*>& World::GetObjects()
 {
     return objects;
+}
+
+void World::AddLight(const Light& light)
+{
+    this->lights.push_back(light);
+}
+
+std::vector<Light>& World::GetLights()
+{
+    return lights;
 }

@@ -15,6 +15,7 @@ RGBColor MultiObjects::TraceRay(const Ray& ray) const
     double t;
     double tmin = FLT_MAX;
     GeometricObject* obj_min = nullptr;
+    HitRec sr_min;
     
     for (auto obj : world->GetObjects())
     {
@@ -24,13 +25,15 @@ RGBColor MultiObjects::TraceRay(const Ray& ray) const
             {
                 tmin = t;
                 obj_min = obj;
+                sr_min = sr;
             }
         }
     }
     
     if (obj_min != nullptr)
     {
-        return obj_min->GetBaseColor();
+        glm::vec3 col = obj_min->GetBaseColor().GetRGBComponents() + world->GetLights()[0].GetColor().GetRGBComponents() * glm::clamp(glm::dot(world->GetLights()[0].GetPosition(), sr_min.normal), 0.f, 1.f);
+        return RGBColor(col);
     }
     return RGBColor::black;
 }
