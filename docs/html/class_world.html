@@ -110,6 +110,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a83d567953db755169f120b225b86d817"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_world.html#a83d567953db755169f120b225b86d817">GetOutputFilename</a> ()</td></tr>
 <tr class="separator:a83d567953db755169f120b225b86d817"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28703ba1eea1c4bb6b796e551b281926"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_world.html#a28703ba1eea1c4bb6b796e551b281926">Build</a> ()</td></tr>
+<tr class="memdesc:a28703ba1eea1c4bb6b796e551b281926"><td class="mdescLeft">&#160;</td><td class="mdescRight">The build function is used to create all the objects in the scene.  <a href="#a28703ba1eea1c4bb6b796e551b281926">More...</a><br/></td></tr>
 <tr class="separator:a28703ba1eea1c4bb6b796e551b281926"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af061ea3ec08fd1657945d32eb3e8f6de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_world.html#af061ea3ec08fd1657945d32eb3e8f6de">RenderScene</a> ()</td></tr>
 <tr class="separator:af061ea3ec08fd1657945d32eb3e8f6de"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -119,6 +120,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a6f05fe0ba61c2757837910243956636e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a33c73e51801825b274e217813c5c90"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_geometric_object.html">GeometricObject</a> * &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_world.html#a9a33c73e51801825b274e217813c5c90">GetObjects</a> ()</td></tr>
 <tr class="separator:a9a33c73e51801825b274e217813c5c90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1314a350b4047805cca8919e5b480af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_world.html#ac1314a350b4047805cca8919e5b480af">AddLight</a> (const <a class="el" href="class_light.html">Light</a> &amp;light)</td></tr>
+<tr class="separator:ac1314a350b4047805cca8919e5b480af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd20a8a84917f3db250b19e34e8cd6a2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_light.html">Light</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_world.html#acd20a8a84917f3db250b19e34e8cd6a2">GetLights</a> ()</td></tr>
+<tr class="separator:acd20a8a84917f3db250b19e34e8cd6a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -157,6 +162,22 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ac1314a350b4047805cca8919e5b480af"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void World::AddLight </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_light.html">Light</a> &amp;&#160;</td>
+          <td class="paramname"><em>light</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a6f05fe0ba61c2757837910243956636e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -186,6 +207,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>The build function is used to create all the objects in the scene. </p>
+
 </div>
 </div>
 <a class="anchor" id="a03b7b9c97f4489692dd4bb64deab44ba"></a>
@@ -194,6 +217,21 @@ Public Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="class_r_g_b_color.html">RGBColor</a> World::GetBackground </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="acd20a8a84917f3db250b19e34e8cd6a2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="class_light.html">Light</a> &gt; &amp; World::GetLights </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -284,7 +322,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 22 2015 10:52:12 for raytracer by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jul 23 2015 12:10:20 for raytracer by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

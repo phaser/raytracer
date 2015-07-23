@@ -99,61 +99,68 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_r_g_b_color_8h.html">RGBColor.h</a>&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_sphere_8h.html">geom/Sphere.h</a>&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">class </span><a class="code" href="class_image_buffer_p_n_g.html">ImageBufferPNG</a>;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">class </span><a class="code" href="class_view_plane.html">ViewPlane</a>;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">class </span><a class="code" href="class_ray_tracer.html">RayTracer</a>;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">class </span><a class="code" href="class_geometric_object.html">GeometricObject</a>;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_world.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_world.html">World</a></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_world.html#a9d34d8c2827f2f93f00ea861bdda1c02">   15</a></span>&#160;    <a class="code" href="class_sphere.html">Sphere</a> <a class="code" href="class_world.html#a9d34d8c2827f2f93f00ea861bdda1c02">sphere</a>;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="class_world.html#afa39d4e6f714a7a3691ac0c656f5e8a8">World</a>();</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="class_world.html#a8c73fba541a5817fff65147ba47cd827">~World</a>();</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_world.html">World</a>&amp; <a class="code" href="class_world.html#ab8c2c9c9724071fecb12e07da23ed3a0">SetOutputFilename</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* outputfile);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">const</span> std::string&amp; <a class="code" href="class_world.html#a83d567953db755169f120b225b86d817">GetOutputFilename</a>();</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_world.html#a28703ba1eea1c4bb6b796e551b281926">Build</a>();</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_world.html#af061ea3ec08fd1657945d32eb3e8f6de">RenderScene</a>();</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="class_r_g_b_color.html">RGBColor</a> <a class="code" href="class_world.html#a03b7b9c97f4489692dd4bb64deab44ba">GetBackground</a>();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_world.html#a6f05fe0ba61c2757837910243956636e">AddObject</a>(<a class="code" href="class_geometric_object.html">GeometricObject</a>* obj);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    std::vector&lt;GeometricObject*&gt;&amp; <a class="code" href="class_world.html#a9a33c73e51801825b274e217813c5c90">GetObjects</a>();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    std::string outputFileName;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    std::string sceneFileName;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="class_image_buffer_p_n_g.html">ImageBufferPNG</a>* imgBuffer;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="class_view_plane.html">ViewPlane</a>* vp;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="class_ray_tracer.html">RayTracer</a>* tracerPtr;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="class_r_g_b_color.html">RGBColor</a> backColor;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    std::vector&lt;GeometricObject*&gt; objects;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> DisplayPixel(uint16_t i, uint16_t j, <span class="keyword">const</span> <a class="code" href="class_r_g_b_color.html">RGBColor</a>&amp; color);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;};</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_light_8h.html">Light.h</a>&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">class </span><a class="code" href="class_image_buffer_p_n_g.html">ImageBufferPNG</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">class </span><a class="code" href="class_view_plane.html">ViewPlane</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">class </span><a class="code" href="class_ray_tracer.html">RayTracer</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">class </span><a class="code" href="class_geometric_object.html">GeometricObject</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_world.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_world.html">World</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_world.html#a9d34d8c2827f2f93f00ea861bdda1c02">   16</a></span>&#160;    <a class="code" href="class_sphere.html">Sphere</a> <a class="code" href="class_world.html#a9d34d8c2827f2f93f00ea861bdda1c02">sphere</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="class_world.html#afa39d4e6f714a7a3691ac0c656f5e8a8">World</a>();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_world.html#a8c73fba541a5817fff65147ba47cd827">~World</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="class_world.html">World</a>&amp; <a class="code" href="class_world.html#ab8c2c9c9724071fecb12e07da23ed3a0">SetOutputFilename</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* outputfile);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">const</span> std::string&amp; <a class="code" href="class_world.html#a83d567953db755169f120b225b86d817">GetOutputFilename</a>();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_world.html#a28703ba1eea1c4bb6b796e551b281926">Build</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_world.html#af061ea3ec08fd1657945d32eb3e8f6de">RenderScene</a>();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="class_r_g_b_color.html">RGBColor</a> <a class="code" href="class_world.html#a03b7b9c97f4489692dd4bb64deab44ba">GetBackground</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_world.html#a6f05fe0ba61c2757837910243956636e">AddObject</a>(<a class="code" href="class_geometric_object.html">GeometricObject</a>* obj);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    std::vector&lt;GeometricObject*&gt;&amp; <a class="code" href="class_world.html#a9a33c73e51801825b274e217813c5c90">GetObjects</a>();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_world.html#ac1314a350b4047805cca8919e5b480af">AddLight</a>(<span class="keyword">const</span> <a class="code" href="class_light.html">Light</a>&amp; light);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    std::vector&lt;Light&gt;&amp; <a class="code" href="class_world.html#acd20a8a84917f3db250b19e34e8cd6a2">GetLights</a>();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    std::string outputFileName;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    std::string sceneFileName;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="class_image_buffer_p_n_g.html">ImageBufferPNG</a>* imgBuffer;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="class_view_plane.html">ViewPlane</a>* vp;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="class_ray_tracer.html">RayTracer</a>* tracerPtr;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="class_r_g_b_color.html">RGBColor</a> backColor;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    std::vector&lt;GeometricObject*&gt; objects;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    std::vector&lt;Light&gt; lights;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> DisplayPixel(uint16_t i, uint16_t j, <span class="keyword">const</span> <a class="code" href="class_r_g_b_color.html">RGBColor</a>&amp; color);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;};</div>
 <div class="ttc" id="class_world_html_a8c73fba541a5817fff65147ba47cd827"><div class="ttname"><a href="class_world.html#a8c73fba541a5817fff65147ba47cd827">World::~World</a></div><div class="ttdeci">~World()</div><div class="ttdef"><b>Definition:</b> World.cpp:18</div></div>
 <div class="ttc" id="class_world_html_a83d567953db755169f120b225b86d817"><div class="ttname"><a href="class_world.html#a83d567953db755169f120b225b86d817">World::GetOutputFilename</a></div><div class="ttdeci">const std::string &amp; GetOutputFilename()</div><div class="ttdef"><b>Definition:</b> World.cpp:30</div></div>
-<div class="ttc" id="class_world_html_a6f05fe0ba61c2757837910243956636e"><div class="ttname"><a href="class_world.html#a6f05fe0ba61c2757837910243956636e">World::AddObject</a></div><div class="ttdeci">void AddObject(GeometricObject *obj)</div><div class="ttdef"><b>Definition:</b> World.cpp:97</div></div>
+<div class="ttc" id="class_world_html_a6f05fe0ba61c2757837910243956636e"><div class="ttname"><a href="class_world.html#a6f05fe0ba61c2757837910243956636e">World::AddObject</a></div><div class="ttdeci">void AddObject(GeometricObject *obj)</div><div class="ttdef"><b>Definition:</b> World.cpp:108</div></div>
+<div class="ttc" id="class_world_html_acd20a8a84917f3db250b19e34e8cd6a2"><div class="ttname"><a href="class_world.html#acd20a8a84917f3db250b19e34e8cd6a2">World::GetLights</a></div><div class="ttdeci">std::vector&lt; Light &gt; &amp; GetLights()</div><div class="ttdef"><b>Definition:</b> World.cpp:123</div></div>
 <div class="ttc" id="_sphere_8h_html"><div class="ttname"><a href="_sphere_8h.html">Sphere.h</a></div></div>
+<div class="ttc" id="class_world_html_ac1314a350b4047805cca8919e5b480af"><div class="ttname"><a href="class_world.html#ac1314a350b4047805cca8919e5b480af">World::AddLight</a></div><div class="ttdeci">void AddLight(const Light &amp;light)</div><div class="ttdef"><b>Definition:</b> World.cpp:118</div></div>
 <div class="ttc" id="_r_g_b_color_8h_html"><div class="ttname"><a href="_r_g_b_color_8h.html">RGBColor.h</a></div></div>
 <div class="ttc" id="class_r_g_b_color_html"><div class="ttname"><a href="class_r_g_b_color.html">RGBColor</a></div><div class="ttdef"><b>Definition:</b> RGBColor.h:4</div></div>
 <div class="ttc" id="class_view_plane_html"><div class="ttname"><a href="class_view_plane.html">ViewPlane</a></div><div class="ttdef"><b>Definition:</b> ViewPlane.h:4</div></div>
-<div class="ttc" id="class_world_html"><div class="ttname"><a href="class_world.html">World</a></div><div class="ttdef"><b>Definition:</b> World.h:12</div></div>
+<div class="ttc" id="class_light_html"><div class="ttname"><a href="class_light.html">Light</a></div><div class="ttdoc">The class that models a light in the scene. </div><div class="ttdef"><b>Definition:</b> Light.h:6</div></div>
+<div class="ttc" id="class_world_html"><div class="ttname"><a href="class_world.html">World</a></div><div class="ttdef"><b>Definition:</b> World.h:13</div></div>
 <div class="ttc" id="class_world_html_af061ea3ec08fd1657945d32eb3e8f6de"><div class="ttname"><a href="class_world.html#af061ea3ec08fd1657945d32eb3e8f6de">World::RenderScene</a></div><div class="ttdeci">void RenderScene()</div><div class="ttdef"><b>Definition:</b> World.cpp:35</div></div>
-<div class="ttc" id="class_world_html_a03b7b9c97f4489692dd4bb64deab44ba"><div class="ttname"><a href="class_world.html#a03b7b9c97f4489692dd4bb64deab44ba">World::GetBackground</a></div><div class="ttdeci">RGBColor GetBackground()</div><div class="ttdef"><b>Definition:</b> World.cpp:92</div></div>
+<div class="ttc" id="class_world_html_a03b7b9c97f4489692dd4bb64deab44ba"><div class="ttname"><a href="class_world.html#a03b7b9c97f4489692dd4bb64deab44ba">World::GetBackground</a></div><div class="ttdeci">RGBColor GetBackground()</div><div class="ttdef"><b>Definition:</b> World.cpp:103</div></div>
 <div class="ttc" id="class_world_html_ab8c2c9c9724071fecb12e07da23ed3a0"><div class="ttname"><a href="class_world.html#ab8c2c9c9724071fecb12e07da23ed3a0">World::SetOutputFilename</a></div><div class="ttdeci">World &amp; SetOutputFilename(const char *outputfile)</div><div class="ttdef"><b>Definition:</b> World.cpp:24</div></div>
+<div class="ttc" id="_light_8h_html"><div class="ttname"><a href="_light_8h.html">Light.h</a></div></div>
 <div class="ttc" id="class_world_html_afa39d4e6f714a7a3691ac0c656f5e8a8"><div class="ttname"><a href="class_world.html#afa39d4e6f714a7a3691ac0c656f5e8a8">World::World</a></div><div class="ttdeci">World()</div><div class="ttdef"><b>Definition:</b> World.cpp:9</div></div>
 <div class="ttc" id="class_ray_tracer_html"><div class="ttname"><a href="class_ray_tracer.html">RayTracer</a></div><div class="ttdef"><b>Definition:</b> RayTracer.h:9</div></div>
-<div class="ttc" id="class_world_html_a9d34d8c2827f2f93f00ea861bdda1c02"><div class="ttname"><a href="class_world.html#a9d34d8c2827f2f93f00ea861bdda1c02">World::sphere</a></div><div class="ttdeci">Sphere sphere</div><div class="ttdef"><b>Definition:</b> World.h:15</div></div>
-<div class="ttc" id="class_world_html_a28703ba1eea1c4bb6b796e551b281926"><div class="ttname"><a href="class_world.html#a28703ba1eea1c4bb6b796e551b281926">World::Build</a></div><div class="ttdeci">void Build()</div><div class="ttdef"><b>Definition:</b> World.cpp:62</div></div>
+<div class="ttc" id="class_world_html_a9d34d8c2827f2f93f00ea861bdda1c02"><div class="ttname"><a href="class_world.html#a9d34d8c2827f2f93f00ea861bdda1c02">World::sphere</a></div><div class="ttdeci">Sphere sphere</div><div class="ttdef"><b>Definition:</b> World.h:16</div></div>
+<div class="ttc" id="class_world_html_a28703ba1eea1c4bb6b796e551b281926"><div class="ttname"><a href="class_world.html#a28703ba1eea1c4bb6b796e551b281926">World::Build</a></div><div class="ttdeci">void Build()</div><div class="ttdoc">The build function is used to create all the objects in the scene. </div><div class="ttdef"><b>Definition:</b> World.cpp:63</div></div>
 <div class="ttc" id="class_image_buffer_p_n_g_html"><div class="ttname"><a href="class_image_buffer_p_n_g.html">ImageBufferPNG</a></div><div class="ttdef"><b>Definition:</b> ImageBufferPNG.h:10</div></div>
 <div class="ttc" id="class_geometric_object_html"><div class="ttname"><a href="class_geometric_object.html">GeometricObject</a></div><div class="ttdoc">GeometricObject is the parent of all the geometric primitives that the raytracer will interact with...</div><div class="ttdef"><b>Definition:</b> GeometricObject.h:13</div></div>
 <div class="ttc" id="class_sphere_html"><div class="ttname"><a href="class_sphere.html">Sphere</a></div><div class="ttdef"><b>Definition:</b> Sphere.h:6</div></div>
-<div class="ttc" id="class_world_html_a9a33c73e51801825b274e217813c5c90"><div class="ttname"><a href="class_world.html#a9a33c73e51801825b274e217813c5c90">World::GetObjects</a></div><div class="ttdeci">std::vector&lt; GeometricObject * &gt; &amp; GetObjects()</div><div class="ttdef"><b>Definition:</b> World.cpp:102</div></div>
+<div class="ttc" id="class_world_html_a9a33c73e51801825b274e217813c5c90"><div class="ttname"><a href="class_world.html#a9a33c73e51801825b274e217813c5c90">World::GetObjects</a></div><div class="ttdeci">std::vector&lt; GeometricObject * &gt; &amp; GetObjects()</div><div class="ttdef"><b>Definition:</b> World.cpp:113</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 22 2015 10:52:12 for raytracer by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jul 23 2015 12:10:20 for raytracer by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

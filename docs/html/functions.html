@@ -88,6 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="#index_g"><span>g</span></a></li>
       <li><a href="#index_h"><span>h</span></a></li>
       <li><a href="#index_i"><span>i</span></a></li>
+      <li><a href="#index_l"><span>l</span></a></li>
       <li><a href="#index_m"><span>m</span></a></li>
       <li><a href="#index_n"><span>n</span></a></li>
       <li><a href="#index_o"><span>o</span></a></li>
@@ -120,6 +121,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock">Here is a list of all class members with links to the classes they belong to:</div>
 
 <h3><a class="anchor" id="index_a"></a>- a -</h3><ul>
+<li>AddLight()
+: <a class="el" href="class_world.html#ac1314a350b4047805cca8919e5b480af">World</a>
+</li>
 <li>AddObject()
 : <a class="el" href="class_world.html#a6f05fe0ba61c2757837910243956636e">World</a>
 </li>
@@ -165,9 +169,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="class_sphere.html#a1a1446f19a193f966cb04704faa3c3e8">Sphere</a>
 , <a class="el" href="class_plane.html#aeedd273c1c77c0a11f300008ba3f7f82">Plane</a>
 </li>
+<li>GetDirection()
+: <a class="el" href="class_light.html#af9e398687037dbc27b1f827311722b90">Light</a>
+</li>
 <li>GetHeight()
 : <a class="el" href="class_image_buffer_p_n_g.html#a0f20f90058c6276f8494e06fb17368b1">ImageBufferPNG</a>
 , <a class="el" href="class_view_plane.html#a8bb3fd9d446d4d8e1319d0301b2f60fd">ViewPlane</a>
+</li>
+<li>GetLights()
+: <a class="el" href="class_world.html#acd20a8a84917f3db250b19e34e8cd6a2">World</a>
 </li>
 <li>GetObjects()
 : <a class="el" href="class_world.html#a9a33c73e51801825b274e217813c5c90">World</a>
@@ -178,6 +188,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>GetPixelSize()
 : <a class="el" href="class_view_plane.html#a806d23e8ce4f7b8ac6e28e4b75c4316e">ViewPlane</a>
 </li>
+<li>GetPosition()
+: <a class="el" href="class_light.html#aaf04cd08affe94ba7af09c9dd302413a">Light</a>
+</li>
 <li>GetRGBAIntPacked()
 : <a class="el" href="class_r_g_b_color.html#aec124d79bc012abfc05deb11aedff25f">RGBColor</a>
 </li>
@@ -185,8 +198,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="class_r_g_b_color.html#a76dfd542cdc5adf37c3c9c44b9e09832">RGBColor</a>
 </li>
 <li>GetWidth()
-: <a class="el" href="class_image_buffer_p_n_g.html#a02707482b138029928e838cb0d63e0fd">ImageBufferPNG</a>
-, <a class="el" href="class_view_plane.html#aff20a346c78660cc86dede335b94aa27">ViewPlane</a>
+: <a class="el" href="class_view_plane.html#aff20a346c78660cc86dede335b94aa27">ViewPlane</a>
+, <a class="el" href="class_image_buffer_p_n_g.html#a02707482b138029928e838cb0d63e0fd">ImageBufferPNG</a>
 </li>
 </ul>
 
@@ -209,6 +222,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h3><a class="anchor" id="index_i"></a>- i -</h3><ul>
 <li>ImageBufferPNG()
 : <a class="el" href="class_image_buffer_p_n_g.html#a983171facccfa80ff2878648ce5014e6">ImageBufferPNG</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_l"></a>- l -</h3><ul>
+<li>Light()
+: <a class="el" href="class_light.html#aeb5df09a25a32f19fdffa761268ba24f">Light</a>
 </li>
 </ul>
 
@@ -267,6 +287,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>SetCenter()
 : <a class="el" href="class_sphere.html#a2b8aef309428ea904c75ce3300a71e09">Sphere</a>
 </li>
+<li>SetDirection()
+: <a class="el" href="class_light.html#ad38e3df3a8c137d535f6fa51c154b6f1">Light</a>
+</li>
 <li>SetHeight()
 : <a class="el" href="class_view_plane.html#addb87fb015c5452f71a164f72bc18229">ViewPlane</a>
 </li>
@@ -278,6 +301,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>SetPixelSize()
 : <a class="el" href="class_view_plane.html#a42ca2f95a1b31497cecb925ef779ac49">ViewPlane</a>
+</li>
+<li>SetPosition()
+: <a class="el" href="class_light.html#a7547b2fb9c1e962382e905f313b6d62f">Light</a>
 </li>
 <li>SetRadius()
 : <a class="el" href="class_sphere.html#a3d00bdfc296c57832f92f96c8095f90d">Sphere</a>
@@ -344,7 +370,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 22 2015 10:52:12 for raytracer by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jul 23 2015 12:10:20 for raytracer by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

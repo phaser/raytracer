@@ -97,6 +97,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
+<p>Class modelling a ray.  
+ <a href="class_ray.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_ray_8h_source.html">Ray.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -113,7 +116,14 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a72dcc3f5854ae9cdfeeceb880ea2caea"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ray.html#a72dcc3f5854ae9cdfeeceb880ea2caea">d</a></td></tr>
 <tr class="separator:a72dcc3f5854ae9cdfeeceb880ea2caea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class modelling a ray. </p>
+<p>The equation of the ray: </p>
+<p class="formulaDsp">
+\[ point = origin + t \cdot direction \]
+</p>
+<p> In order to find the intersection of the ray with various implicit surfaces \( f(p) = 0 \) we have to substitute the equation of the ray and solve for the: \( f(origin + t \cdot direction) = 0 \) </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a2e3d2c29f2df4ab3da10da79d4acb852"></a>
 <div class="memitem">
 <div class="memproto">
@@ -176,7 +186,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 22 2015 10:52:12 for raytracer by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jul 23 2015 12:10:20 for raytracer by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

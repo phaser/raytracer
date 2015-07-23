@@ -22,12 +22,12 @@ void Light::SetPosition(const glm::vec3& position)
     this->position = position;
 }
 
-RGBColor Light::GetColor()
+glm::vec3 Light::GetDirection() const
 {
-    return this->color;
+    return this->direction;
 }
 
-void Light::SetColor(const RGBColor& color)
+void Light::SetDirection(const glm::vec3& direction)
 {
-    this->color = color;
+    this->direction = glm::normalize(direction);
 }

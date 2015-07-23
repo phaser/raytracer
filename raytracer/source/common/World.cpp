@@ -85,8 +85,8 @@ void World::Build()
     this->AddObject(plane);
     
     Light light;
-    light.SetPosition(glm::vec3(10.f, -10.f, 10.f));
-    light.SetColor(RGBColor(glm::vec3(0.f, 0.2f, 0.3f)));
+    light.SetPosition(glm::vec3(100.f, -100.f, 100.f));
+    light.SetDirection(glm::vec3(10.f, -10.f, 10.f));
     this->AddLight(light);
     
     outputFileName = "MultiObject.png";
