@@ -32,9 +32,8 @@ RGBColor MultiObjects::TraceRay(const Ray& ray) const
     
     if (obj_min != nullptr)
     {
-        glm::vec3 col = obj_min->GetBaseColor().GetRGBComponents()
-                        * glm::clamp(
-                                     glm::dot(sr_min.normal, world->GetLights()[0].GetDirection())
+        glm::vec3 col = glm::clamp(obj_min->GetBaseColor().GetRGBComponents() * 0.2f + obj_min->GetBaseColor().GetRGBComponents()
+                        * (glm::dot(sr_min.normal, world->GetLights()[0].GetDirection()))
                                      , 0.f, 1.f
                                     );
         return RGBColor(col);

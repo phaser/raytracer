@@ -36,7 +36,7 @@ void World::RenderScene()
 {
     RGBColor pixel_color;
     Ray ray;
-    double cam_zw = 100.0;
+    double cam_zw = 800.0;
     double vp_zw = 0.0;
     double x, y;
     
@@ -72,12 +72,12 @@ void World::Build()
     sphere.SetCenter(glm::vec3(0.f, 0.f, 0.f));
     sphere.SetRadius(85.0);
     Sphere *msphere = new Sphere();
-    msphere->SetCenter(glm::vec3(0.f, -50.f, -50.f));
+    msphere->SetCenter(glm::vec3(-100.f, -100.f, -100.f));
     msphere->SetRadius(85.0);
     msphere->baseColor = RGBColor::red;
     this->AddObject(msphere);
     msphere = new Sphere();
-    msphere->SetCenter(glm::vec3(10.f, 40.f, -50.f));
+    msphere->SetCenter(glm::vec3(100.f, -100.f, -100.f));
     msphere->SetRadius(65.f);
     msphere->baseColor = RGBColor::yellow;
     this->AddObject(msphere);
