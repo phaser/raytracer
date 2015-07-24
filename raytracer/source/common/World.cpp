@@ -4,7 +4,7 @@
 #include <tracer/MultiObjects.h>
 #include <Ray.h>
 #include <geom/Plane.h>
-
+#include <sampler/Regular.h>
 
 World::World()
     : outputFileName("")
@@ -34,13 +34,19 @@ const std::string& World::GetOutputFilename()
 
 void World::RenderScene()
 {
-    RGBColor pixel_color;
+    RGBColor pixel_color(glm::vec3(0.f, 0.f, 0.f));
     Ray ray;
     
     for (int i = 0; i < vp->GetWidth(); i++)
     for (int j = 0; j < vp->GetHeight(); j++)
     {
-        pixel_color = tracerPtr->TraceRay(vp->GenerateRay(i, j));
+        size_t sz = (vp->GetSamplerPtr() != nullptr ? vp->GetSamplerPtr()->GetNumSamples() : 1);
+        pixel_color = glm::vec3(0.f, 0.f, 0.f);
+        for (int k = 0; k < sz; ++k)
+        {
+            pixel_color = pixel_color + tracerPtr->TraceRay(vp->GenerateRay(i, j));
+        }
+        pixel_color /= sz;
         DisplayPixel(i, j, pixel_color);
     }
     imgBuffer->SaveToPngFile(outputFileName.c_str());
@@ -54,6 +60,7 @@ void World::Build()
        .SetHeight(480)
        .SetPixelSize(1.f);
     vp->SetFocalDistance(800.f);
+    vp->SetSamplerPtr(new Regular(4));
     imgBuffer = new ImageBufferPNG(vp->GetWidth(), vp->GetHeight());
     tracerPtr = new MultiObjects(this);
     

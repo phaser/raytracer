@@ -28,3 +28,23 @@ uint32_t RGBColor::GetRGBAIntPacked() const
     col = col | (0xFF << 24);
     return col;
 }
+
+RGBColor RGBColor::operator+(const RGBColor& rhs)
+{
+    RGBColor col(this->GetRGBComponents() + rhs.GetRGBComponents());
+    return col;
+}
+
+RGBColor RGBColor::operator+=(const RGBColor& rhs)
+{
+    RGBColor col(this->GetRGBComponents() + rhs.GetRGBComponents());
+    return col;
+}
+
+RGBColor RGBColor::operator/=(int d)
+{
+    this->color.x /= (float)d;
+    this->color.y /= (float)d;
+    this->color.z /= (float)d;
+    return *this;
+}

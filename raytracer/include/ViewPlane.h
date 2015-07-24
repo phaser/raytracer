@@ -2,6 +2,7 @@
 #include <stdint.h>
 
 class Ray;
+class Sampler;
 
 class ViewPlane
 {
@@ -16,6 +17,8 @@ public:
     Ray GenerateRay(uint32_t x, uint32_t y);
     void SetFocalDistance(float focalDistance);
     float GetFocalDistance() const;
+    Sampler* GetSamplerPtr() const;
+    void SetSamplerPtr(Sampler* sampler);
 private:
     uint16_t width;
     uint16_t height;
@@ -23,4 +26,5 @@ private:
     float gamma;
     float inv_gamma;
     float focalDistance;        /**< The point in the back of the viewplane where rays originate */
+    Sampler* sampler_ptr;
 };
