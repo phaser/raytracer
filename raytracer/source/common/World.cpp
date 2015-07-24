@@ -36,24 +36,11 @@ void World::RenderScene()
 {
     RGBColor pixel_color;
     Ray ray;
-    double cam_zw = 800.0;
-    double vp_zw = 0.0;
-    double x, y;
-    
-    glm::vec3 orig(0.f, 0.f, cam_zw);
-    ray.o = orig;
     
     for (int i = 0; i < vp->GetWidth(); i++)
     for (int j = 0; j < vp->GetHeight(); j++)
     {
-        x = vp->GetPixelSize() * (i - 0.5 * (vp->GetWidth() - 1.0));
-        y = vp->GetPixelSize() * (j - 0.5 * (vp->GetHeight() - 1.0));
-        glm::vec3 dir(x, y, vp_zw);
-        glm::vec3 ndir = dir - orig;
-        ndir = glm::normalize(ndir);
-        ray.d = ndir;
-        
-        pixel_color = tracerPtr->TraceRay(ray);
+        pixel_color = tracerPtr->TraceRay(vp->GenerateRay(i, j));
         DisplayPixel(i, j, pixel_color);
     }
     imgBuffer->SaveToPngFile(outputFileName.c_str());
@@ -66,6 +53,7 @@ void World::Build()
     vp->SetWidth(640)
        .SetHeight(480)
        .SetPixelSize(1.f);
+    vp->SetFocalDistance(800.f);
     imgBuffer = new ImageBufferPNG(vp->GetWidth(), vp->GetHeight());
     tracerPtr = new MultiObjects(this);
     
