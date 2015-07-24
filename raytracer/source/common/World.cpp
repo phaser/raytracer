@@ -5,6 +5,7 @@
 #include <Ray.h>
 #include <geom/Plane.h>
 #include <sampler/Regular.h>
+#include <sampler/Jitter.h>
 
 World::World()
     : outputFileName("")
@@ -44,7 +45,7 @@ void World::RenderScene()
         pixel_color = glm::vec3(0.f, 0.f, 0.f);
         for (int k = 0; k < sz; ++k)
         {
-            pixel_color = pixel_color + tracerPtr->TraceRay(vp->GenerateRay(i, j));
+            pixel_color += tracerPtr->TraceRay(vp->GenerateRay(i, j));
         }
         pixel_color /= sz;
         DisplayPixel(i, j, pixel_color);
@@ -60,7 +61,7 @@ void World::Build()
        .SetHeight(480)
        .SetPixelSize(1.f);
     vp->SetFocalDistance(800.f);
-    vp->SetSamplerPtr(new Regular(4));
+    vp->SetSamplerPtr(new Jitter(4));
     imgBuffer = new ImageBufferPNG(vp->GetWidth(), vp->GetHeight());
     tracerPtr = new MultiObjects(this);
     

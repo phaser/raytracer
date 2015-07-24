@@ -37,8 +37,8 @@ RGBColor RGBColor::operator+(const RGBColor& rhs)
 
 RGBColor RGBColor::operator+=(const RGBColor& rhs)
 {
-    RGBColor col(this->GetRGBComponents() + rhs.GetRGBComponents());
-    return col;
+    *this = *this + rhs;
+    return *this;
 }
 
 RGBColor RGBColor::operator/=(int d)
