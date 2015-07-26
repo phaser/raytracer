@@ -3,7 +3,7 @@
 #include <RGBColor.h>
 #include <geom/Sphere.h>
 #include <vector>
-#include <Light.h>
+#include <lights/Light.h>
 
 class ImageBufferPNG;
 class ViewPlane;

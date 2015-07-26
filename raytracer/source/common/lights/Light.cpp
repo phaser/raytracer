@@ -1,4 +1,4 @@
-#include <Light.h>
+#include <lights/Light.h>
 
 Light::Light()
 : position(glm::vec3(0.f, 0.f, 0.f))

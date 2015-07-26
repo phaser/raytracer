@@ -13,6 +13,6 @@ public:
     glm::vec3 GetDirection() const;
     void SetDirection(const glm::vec3& direction);
 private:
-    glm::vec3 position; /**< The position of the light. */
+    glm::vec3 position;       /**< The position of the light. */
     glm::vec3 direction;      /**< The direction of the light. */
 };
