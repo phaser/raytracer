@@ -24,8 +24,8 @@ public:
     RGBColor GetBackground();
     void AddObject(GeometricObject* obj);
     std::vector<GeometricObject*>& GetObjects();
-    void AddLight(const Light& light);
-    std::vector<Light>& GetLights();
+    void AddLight(Light* light);
+    std::vector<Light*>& GetLights();
 private:
     std::string outputFileName;
     std::string sceneFileName;
@@ -34,7 +34,7 @@ private:
     RayTracer* tracerPtr;
     RGBColor backColor;
     std::vector<GeometricObject*> objects;
-    std::vector<Light> lights;
+    std::vector<Light*> lights;
 
     void DisplayPixel(uint16_t i, uint16_t j, const RGBColor& color);
 };

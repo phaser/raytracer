@@ -48,3 +48,12 @@ RGBColor RGBColor::operator/=(int d)
     this->color.z /= (float)d;
     return *this;
 }
+
+RGBColor RGBColor::operator*(float op)
+{
+    RGBColor col(*this);
+    col.color.x *= op;
+    col.color.y *= op;
+    col.color.z *= op;
+    return col;
+}

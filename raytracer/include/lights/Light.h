@@ -1,18 +1,17 @@
 #pragma once
 #include <glm/glm.hpp>
-#include <RGBColor.h>
+
+class HitRec;
+class RGBColor;
 
 /** \brief The class that models a light in the scene. */
 class Light
 {
 public:
-    Light();
-    Light(const glm::vec3& position);
-    glm::vec3 GetPosition() const;
-    void SetPosition(const glm::vec3& position);
-    glm::vec3 GetDirection() const;
-    void SetDirection(const glm::vec3& direction);
-private:
-    glm::vec3 position;       /**< The position of the light. */
-    glm::vec3 direction;      /**< The direction of the light. */
+    /** \brief Returns the direction of the light at hitpoint */
+    virtual glm::vec3 GetDirection(const HitRec& hr) =0;
+    /** \brief Return the radiance of the light at hitpoint */
+    virtual RGBColor L(const HitRec& hr) =0;
+protected:
+    bool shadows;
 };

@@ -82,12 +82,12 @@ std::vector<GeometricObject*>& World::GetObjects()
     return objects;
 }
 
-void World::AddLight(const Light& light)
+void World::AddLight(Light* light)
 {
     this->lights.push_back(light);
 }
 
-std::vector<Light>& World::GetLights()
+std::vector<Light*>& World::GetLights()
 {
     return lights;
 }
