@@ -2,6 +2,7 @@
 #include <Ray.h>
 #include <HitRec.h>
 #include <RGBColor.h>
+#include <materials/Material.h>
 
 const double Sphere::kEpsilon = 0.1;
 
@@ -53,9 +54,4 @@ void Sphere::SetCenter(const glm::vec3& center)
 void Sphere::SetRadius(double radius)
 {
     this->radius = radius;
-}
-
-RGBColor Sphere::GetBaseColor()
-{
-    return this->baseColor;
 }

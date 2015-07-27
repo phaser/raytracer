@@ -1,8 +1,9 @@
 #pragma once
+#include <materials/Material.h>
 
 class Ray;
 class HitRec;
-class RGBColor;
+class Material;
 
 /** \brief GeometricObject is the parent of all the geometric primitives
  *         that the raytracer will interact with.
@@ -13,6 +14,8 @@ class RGBColor;
 class GeometricObject
 {
 public:
+    GeometricObject();
+    ~GeometricObject();
     /** \brief The Hit function is used to intersect rays with the object.
      *
      * It is declared pure virtual so every object who inherits from GeometricObject
@@ -23,5 +26,8 @@ public:
      * \param hr is the HitRecord @see HitRec
      */
     virtual bool Hit(const Ray& ray, double& tmin, HitRec& hr) const =0;
-    virtual RGBColor GetBaseColor() =0;
+    virtual Material& GetMaterial();
+    virtual GeometricObject& SetMaterial(Material* material);
+protected:
+    Material *material;
 };

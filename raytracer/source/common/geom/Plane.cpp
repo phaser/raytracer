@@ -32,8 +32,3 @@ bool Plane::Hit(const Ray& ray, double& tmin, HitRec& hr) const
     }
     return false;
 }
-
-RGBColor Plane::GetBaseColor()
-{
-    return RGBColor(glm::vec3(0.f, 0.5f, 1.0f));
-}

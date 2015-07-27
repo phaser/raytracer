@@ -2,6 +2,12 @@
 #include <RGBColor.h>
 #include <glm/ext.hpp>
 
+Lambertian::Lambertian()
+    : kd(1.f)
+    , cd(RGBColor(glm::vec3(1.f)))
+{
+}
+
 RGBColor Lambertian::f(const HitRec& hr, const glm::vec3& wi, const glm::vec3& wo)
 {
     return cd * kd * glm::one_over_pi<float>();

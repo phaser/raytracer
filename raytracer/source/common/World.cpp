@@ -7,6 +7,10 @@
 #include <sampler/Regular.h>
 #include <sampler/Jitter.h>
 #include <lights/Light.h>
+#include <lights/Ambient.h>
+#include <brdf/Lambertian.h>
+#include <materials/Matte.h>
+#include <lights/PointLight.h>
 
 World::World()
     : ambient_ptr(nullptr)

@@ -16,7 +16,6 @@ class Plane : public GeometricObject
 public:
     Plane(const glm::vec3& point, const glm::vec3& norm);
     bool Hit(const Ray& ray, double& tmin, HitRec& hr) const;
-    RGBColor GetBaseColor();
 private:
     glm::vec3 norm;
     glm::vec3 point;

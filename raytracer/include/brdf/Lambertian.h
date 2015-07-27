@@ -5,6 +5,7 @@
 class Lambertian : public BRDF
 {
 public:
+    Lambertian();
     RGBColor f(const HitRec& hr, const glm::vec3& wi, const glm::vec3& wo) override;
     RGBColor rho(const HitRec& hr, const glm::vec3& wo);
     Lambertian& SetKd(const float kd);
