@@ -16,12 +16,15 @@ light->SetLocation(glm::vec3(100.f, 100.f, 100.f));
 this->AddLight(light);
 light = new PointLight();
 light->SetLocation(glm::vec3(-100.f, -100.f, -100.f));
+light->SetColor(RGBColor(glm::vec3(0.f, 0.f, 1.f)));
 this->AddLight(light);
 light = new PointLight();
 light->SetLocation(glm::vec3(-100.f, -100.f, 100.f));
+light->SetColor(RGBColor(glm::vec3(0.f, 1.f, 1.f)));
 this->AddLight(light);
 light = new PointLight();
 light->SetLocation(glm::vec3(-100.f, 100.f, -100.f));
+light->SetColor(RGBColor(glm::vec3(0.f, 1.f, 0.f)));
 this->AddLight(light);
 
 Matte* sphere_material = new Matte();
