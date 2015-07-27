@@ -9,7 +9,9 @@
 #include <lights/Light.h>
 #include <lights/Ambient.h>
 #include <brdf/Lambertian.h>
+#include <brdf/GlossySpecular.h>
 #include <materials/Matte.h>
+#include <materials/Phong.h>
 #include <lights/PointLight.h>
 
 World::World()

@@ -1,6 +1,6 @@
 #pragma once
 #include <brdf/BRDF.h>
-#include <RGBColor.h>
+#include <RGBColor.h>
 
 class Lambertian : public BRDF
 {

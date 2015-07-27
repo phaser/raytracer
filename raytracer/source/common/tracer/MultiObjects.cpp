@@ -33,7 +33,9 @@ RGBColor MultiObjects::TraceRay(const Ray& ray) const
     if (obj_min != nullptr)
     {
         obj_min->GetMaterial().shade(sr_min);
-        return obj_min->GetMaterial().shade(sr_min);
+        RGBColor col = obj_min->GetMaterial().shade(sr_min);
+        col.Clamp();
+        return col;
     }
     return RGBColor::black;
 }
