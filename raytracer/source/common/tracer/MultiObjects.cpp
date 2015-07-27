@@ -11,11 +11,11 @@ MultiObjects::MultiObjects(World* world)
 
 RGBColor MultiObjects::TraceRay(const Ray& ray) const
 {
-    HitRec sr;
+    HitRec sr(*world);
     double t;
     double tmin = FLT_MAX;
     GeometricObject* obj_min = nullptr;
-    HitRec sr_min;
+    HitRec sr_min(*world);
     
     for (auto obj : world->GetObjects())
     {

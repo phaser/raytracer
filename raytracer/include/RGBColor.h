@@ -15,6 +15,7 @@ public:
     RGBColor operator+=(const RGBColor& rhs);
     RGBColor operator/=(int d);
     RGBColor operator*(float op);
+    RGBColor operator*(const RGBColor& rhs);
 private:
     glm::vec3 color;
 };

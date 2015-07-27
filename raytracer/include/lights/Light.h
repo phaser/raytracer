@@ -8,6 +8,7 @@ class RGBColor;
 class Light
 {
 public:
+    virtual ~Light() {}
     /** \brief Returns the direction of the light at hitpoint */
     virtual glm::vec3 GetDirection(const HitRec& hr) =0;
     /** \brief Return the radiance of the light at hitpoint */

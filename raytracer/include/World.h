@@ -14,6 +14,7 @@ class World
 {
 public:
     Sphere sphere;
+    Light* ambient_ptr;
     
     World();
     ~World();

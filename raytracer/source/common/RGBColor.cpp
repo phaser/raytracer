@@ -57,3 +57,12 @@ RGBColor RGBColor::operator*(float op)
     col.color.z *= op;
     return col;
 }
+
+RGBColor RGBColor::operator*(const RGBColor& rhs)
+{
+    RGBColor col(*this);
+    col.color.x *= rhs.color.x;
+    col.color.y *= rhs.color.y;
+    col.color.z *= rhs.color.z;
+    return col;
+}

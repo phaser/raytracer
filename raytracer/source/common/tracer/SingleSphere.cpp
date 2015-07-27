@@ -10,7 +10,7 @@ SingleSphere::SingleSphere(World* world)
 
 RGBColor SingleSphere::TraceRay(const Ray& ray) const
 {
-    HitRec sr;
+    HitRec sr(*world);
     double t;
     
     if (this->world->sphere.Hit(ray, t, sr))

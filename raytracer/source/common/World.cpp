@@ -6,9 +6,11 @@
 #include <geom/Plane.h>
 #include <sampler/Regular.h>
 #include <sampler/Jitter.h>
+#include <lights/Light.h>
 
 World::World()
-    : outputFileName("")
+    : ambient_ptr(nullptr)
+    , outputFileName("")
     , sceneFileName("")
     , imgBuffer(nullptr)
     , vp(nullptr)
@@ -20,6 +22,7 @@ World::~World()
 {
     delete imgBuffer;
     delete vp;
+    delete ambient_ptr;
 }
 
 World& World::SetOutputFilename(const char* outputfile)
