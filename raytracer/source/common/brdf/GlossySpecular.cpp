@@ -3,7 +3,7 @@
 #include <HitRec.h>
 
 GlossySpecular::GlossySpecular()
-    : ks(1.f)
+    : ks(0.25f)
     , exp(5.f)
 {
     
@@ -19,7 +19,7 @@ RGBColor GlossySpecular::f(const HitRec& hr, const glm::vec3& wi, const glm::vec
 {
     RGBColor L;
     float ndotwi = glm::dot(hr.normal, wi);
-    glm::vec3 r(-wi + 2.f * ndotwi * hr.normal);
+    glm::vec3 r(wi - 2.f * ndotwi * hr.normal);
     float rdotwo = glm::dot(r, wo);
     
     if (rdotwo > 0.f)
