@@ -28,7 +28,7 @@ bool Sphere::Hit(const Ray& ray, double& tmin, HitRec& hr) const
         {
             tmin = t;
             //hr.normal = (temp + static_cast<float>(t) * ray.d) * static_cast<float>((1.0f/radius));
-            hr.hitPoint = ray.o + static_cast<float>(t) * ray.d;
+            hr.hitPoint = ray.o + (float)t * ray.d;
             hr.normal = glm::normalize(hr.hitPoint - center);
             return true;
         }
@@ -38,7 +38,7 @@ bool Sphere::Hit(const Ray& ray, double& tmin, HitRec& hr) const
         {
             tmin = t;
             //hr.normal = (temp + static_cast<float>(t) * ray.d) * static_cast<float>((1.0f/radius));
-            hr.hitPoint = ray.o + static_cast<float>(t) * ray.d;
+            hr.hitPoint = ray.o + (float)t * ray.d;
             hr.normal = glm::normalize(hr.hitPoint - center);
             return true;
         }
@@ -54,4 +54,39 @@ void Sphere::SetCenter(const glm::vec3& center)
 void Sphere::SetRadius(double radius)
 {
     this->radius = radius;
+}
+
+bool Sphere::DidShadowHit(const Ray& ray, float& tmin)
+{
+    double t;
+    glm::vec3 temp = ray.o - center;
+    double a = glm::dot(ray.d, ray.d);
+    double b = glm::dot(2.0f * temp, ray.d);
+    double c = glm::dot(temp, temp) - radius * radius;
+    double disc = b * b - 4.0f * a * c;
+    
+    if (disc < 0.0)
+    {
+        return false;
+    } else
+    {
+        double e = sqrt(disc);
+        double denom = 2.0 * a;
+        t = (-b - e) / denom;       // smaller root
+        
+        if (t > kEpsilon)
+        {
+            tmin = t;
+            //hr.normal = (temp + static_cast<float>(t) * ray.d) * static_cast<float>((1.0f/radius));
+            return true;
+        }
+        
+        t = (-b + e) / denom;       // larger root
+        if (t > kEpsilon)
+        {
+            tmin = t;
+            return true;
+        }
+    }
+    return false;
 }

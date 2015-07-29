@@ -23,8 +23,16 @@ RGBColor Phong::shade(HitRec& hr)
         float ndotwi = glm::dot(hr.normal, wi);
         if (ndotwi > 0.f)
         {
-            RGBColor col = diffuse_brdf->f(hr, wi, wo) + specular_brdf->f(hr, wi, wo);
-            L += col * hr.world.GetLights()[i]->L(hr) * ndotwi;
+            Ray shadowRay;
+            shadowRay.o = hr.hitPoint;
+            shadowRay.d = wi;
+            bool inShadow = hr.world.GetLights()[i]->IsInShadow(shadowRay, hr);
+            
+            if (!inShadow)
+            {
+                RGBColor col = diffuse_brdf->f(hr, wi, wo) + specular_brdf->f(hr, wi, wo);
+                L += col * hr.world.GetLights()[i]->L(hr) * ndotwi;
+            }
         }
     }
     return L;

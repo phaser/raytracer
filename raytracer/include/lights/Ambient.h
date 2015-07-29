@@ -12,6 +12,7 @@ public:
     RGBColor GetColor() const;
     Ambient& SetLightIntensity(const float ls);
     float GetLightIntensity() const;
+    bool IsInShadow(const Ray& ray, const HitRec& hr) const;
 private:
     float ls;           /**< Parameter to tune the brightness of the light */
     RGBColor color;     /**< The color of the light. */

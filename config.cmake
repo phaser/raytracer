@@ -31,6 +31,8 @@ add_target (raytracer-unix
     INHERIT         __DEFAULT
     PLATFORM        osx
     PROJECT_TYPE    "Unix Makefiles"
+    CUSTOM_ARGS_PD
+        "-DCMAKE_C_COMPILER=/usr/local/bin/clang -DCMAKE_CXX_COMPILER=/usr/local/bin/clang++"
     CUSTOM_ARGS
         "-Wdev"
         " -DRUNTIME_DIR=debug"

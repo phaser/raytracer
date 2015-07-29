@@ -37,3 +37,8 @@ float Ambient::GetLightIntensity() const
 {
     return this->ls;
 }
+
+bool Ambient::IsInShadow(const Ray& ray, const HitRec& hr) const
+{
+    return false;
+}

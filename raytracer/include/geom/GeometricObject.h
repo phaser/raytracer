@@ -28,6 +28,7 @@ public:
     virtual bool Hit(const Ray& ray, double& tmin, HitRec& hr) const =0;
     virtual Material& GetMaterial();
     virtual GeometricObject& SetMaterial(Material* material);
+    virtual bool DidShadowHit(const Ray& ray, float& t) =0;
 protected:
     Material *material;
 };

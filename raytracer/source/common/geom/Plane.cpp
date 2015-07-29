@@ -19,6 +19,25 @@ Plane::Plane(const glm::vec3& point, const glm::vec3& norm)
  */
 bool Plane::Hit(const Ray& ray, double& tmin, HitRec& hr) const
 {
+    float t;
+    bool result = RayIntersects(ray, t);
+    if (result)
+    {
+        tmin = t;
+        hr.normal = norm;
+        hr.hitPoint = ray.o + (float)tmin * ray.d;
+    }
+    return result;
+}
+
+bool Plane::DidShadowHit(const Ray& ray, float& tmin)
+{
+    bool hit = RayIntersects(ray, tmin);
+    return hit;
+}
+
+bool Plane::RayIntersects(const Ray& ray, float& tmin) const
+{
     glm::vec3 tmp = point - ray.o;
     double a = glm::dot(tmp, norm);
     double b = glm::dot(ray.d, norm);
@@ -26,8 +45,6 @@ bool Plane::Hit(const Ray& ray, double& tmin, HitRec& hr) const
     if (t > kEpsilon)
     {
         tmin = t;
-        hr.normal = norm;
-        hr.hitPoint = ray.o + (float)tmin * ray.d;
         return true;
     }
     return false;

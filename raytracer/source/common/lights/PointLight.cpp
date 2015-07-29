@@ -1,6 +1,7 @@
 #include <lights/PointLight.h>
 #include <RGBColor.h>
 #include <HitRec.h>
+#include <geom/GeometricObject.h>
 
 PointLight::PointLight()
     : ls(1.f)
@@ -50,4 +51,19 @@ PointLight& PointLight::SetLocation(const glm::vec3& location)
 glm::vec3 PointLight::GetLocation() const
 {
     return this->location;
+}
+
+bool PointLight::IsInShadow(const Ray& ray, const HitRec& hr) const
+{
+    float t;
+    size_t num_objects = hr.world.GetObjects().size();
+    float d = glm::distance(location, ray.o);
+    for (size_t i = 0; i < num_objects; ++i)
+    {
+        if (hr.world.GetObjects()[i]->DidShadowHit(ray, t) && t < d)
+        {
+            return true;
+        }
+    }
+    return false;
 }
