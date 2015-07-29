@@ -2,7 +2,7 @@
 #include <HitRec.h>
 
 GeometricObject::GeometricObject()
-    : material(nullptr)
+    : material("")
 {
 }
 

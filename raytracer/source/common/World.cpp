@@ -14,6 +14,7 @@
 #include <materials/Phong.h>
 #include <lights/PointLight.h>
 #include <glm/ext.hpp>
+#include <AssetStore.h>
 
 World::World()
     : ambient_ptr(nullptr)
@@ -66,7 +67,7 @@ void World::RenderScene()
 /** \brief The build function is used to create all the objects in the scene. */
 void World::Build()
 {
-#include <scenes/Scene_DancingSpheres.h>
+#include <scenes/Scene_MultiObject.h>
 }
 
 /** \brief It is a separate function because it should be used to perform gamma correction. Right now

@@ -34,7 +34,7 @@ RGBColor MultiObjects::TraceRay(const Ray& ray) const
     
     if (obj_min != nullptr)
     {
-        RGBColor col = AssetStore::Instance().materials.get(qui::Hash(obj_min->GetMaterial().c_str()).value)->shade(sr_min);
+        RGBColor col = AssetStore::Instance().GetMaterials().get(qui::Hash(obj_min->GetMaterial().c_str()).value)->shade(sr_min);
         col.Clamp();
         return col;
     }

@@ -9,10 +9,9 @@ class AssetStore
 {
 public:
     static AssetStore& Instance();
-    qui::UniversalHashStore<std::shared_ptr<Material>> materials;
-    qui::UniversalHashStore<std::shared_ptr<Light>> lights;
-    qui::UniversalHashStore<std::shared_ptr<BRDF>> brdfs;
+    qui::UniversalHashStore<std::shared_ptr<Material>>& GetMaterials() { return materials; }
 private:
     AssetStore() {}
     static AssetStore _instance;
+    qui::UniversalHashStore<std::shared_ptr<Material>> materials;
 };
