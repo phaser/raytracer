@@ -3,6 +3,8 @@
 #include <HitRec.h>
 #include <World.h>
 #include <cfloat>
+#include <AssetStore.h>
+#include <qui/Hash.h>
 
 MultiObjects::MultiObjects(World* world)
 : RayTracer(world)
@@ -32,8 +34,7 @@ RGBColor MultiObjects::TraceRay(const Ray& ray) const
     
     if (obj_min != nullptr)
     {
-        obj_min->GetMaterial().shade(sr_min);
-        RGBColor col = obj_min->GetMaterial().shade(sr_min);
+        RGBColor col = AssetStore::Instance().materials.get(qui::Hash(obj_min->GetMaterial().c_str()).value)->shade(sr_min);
         col.Clamp();
         return col;
     }

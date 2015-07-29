@@ -8,20 +8,15 @@ GeometricObject::GeometricObject()
 
 GeometricObject::~GeometricObject()
 {
-    delete material;
 }
 
-Material& GeometricObject::GetMaterial()
+std::string& GeometricObject::GetMaterial()
 {
-    return *(this->material);
+    return this->material;
 }
 
-GeometricObject& GeometricObject::SetMaterial(Material* material)
+GeometricObject& GeometricObject::SetMaterial(const std::string& material)
 {
-    if (this->material != nullptr)
-    {
-        delete this->material;
-    }
     this->material = material;
     return *this;
 }

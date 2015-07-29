@@ -1,5 +1,6 @@
 #pragma once
 #include <materials/Material.h>
+#include <string>
 
 class Ray;
 class HitRec;
@@ -26,9 +27,9 @@ public:
      * \param hr is the HitRecord @see HitRec
      */
     virtual bool Hit(const Ray& ray, double& tmin, HitRec& hr) const =0;
-    virtual Material& GetMaterial();
-    virtual GeometricObject& SetMaterial(Material* material);
+    virtual std::string& GetMaterial();
+    virtual GeometricObject& SetMaterial(const std::string& material);
     virtual bool DidShadowHit(const Ray& ray, float& t) =0;
 protected:
-    Material *material;
+    std::string material;
 };
