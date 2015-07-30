@@ -15,6 +15,7 @@
 #include <lights/PointLight.h>
 #include <glm/ext.hpp>
 #include <AssetStore.h>
+#include <qui/Log.h>
 
 World::World()
     : ambient_ptr(nullptr)
@@ -46,6 +47,8 @@ const std::string& World::GetOutputFilename()
 
 void World::RenderScene()
 {
+    LOG(INFO) << "ViewPlane: " << vp->GetWidth() << "x" << vp->GetHeight();
+    LOG(INFO) << "Output file: " << outputFileName;
     RGBColor pixel_color(glm::vec3(0.f, 0.f, 0.f));
     Ray ray;
     
