@@ -5,7 +5,8 @@ project (${PROJ_NAME})
 include (main)
 
 module(${PROJ_NAME}
-    DEPENDENCY lodepng  20120729  
-    DEPENDENCY glm      0.9.6.3 
-    DEPENDENCY QUIUtils dev
+    DEPENDENCY lodepng      20120729  
+    DEPENDENCY glm          0.9.6.3 
+    DEPENDENCY QUIUtils     dev
+    DEPENDENCY assimp       3.1.1
 )
