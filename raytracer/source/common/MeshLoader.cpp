@@ -13,20 +13,8 @@ MeshLoader::MeshLoader(const std::string& filename, World* world)
 {
 }
 
-void MeshLoader::ExecuteLoading()
+void MeshLoader::LoadLights(const aiScene *scene)
 {
-    Assimp::Importer importer;
-    const aiScene* scene = importer.ReadFile("test.blend",
-                                             aiProcess_Triangulate);
-    if (!scene)
-    {
-        LOG(LERROR) << "Import failed: " << importer.GetErrorString();
-    }
-    
-    LOG(INFO) << "Num meshes: " << scene->mNumMeshes;
-    LOG(INFO) << "Num lights: " << scene->mNumLights;
-    LOG(INFO) << "Num cameras " << scene->mNumCameras;
-
     for (size_t i = 0; i < scene->mNumLights; ++i)
     {
         aiLight *light = scene->mLights[i];
@@ -49,7 +37,7 @@ void MeshLoader::ExecuteLoading()
                 PointLight *pointlight = new PointLight();
                 aiVector3D position = lightNode->mTransformation * light->mPosition;
                 pointlight->SetLocation(glm::vec3(position.x, position.y, position.z))
-                           .SetColor(glm::vec3(light->mColorAmbient.r, light->mColorAmbient.g, light->mColorAmbient.b));
+                .SetColor(glm::vec3(light->mColorAmbient.r, light->mColorAmbient.g, light->mColorAmbient.b));
                 LOG(INFO) << "Position: " << pointlight->GetLocation().x << " "
                                           << pointlight->GetLocation().y << " "
                                           << pointlight->GetLocation().z;
@@ -66,8 +54,33 @@ void MeshLoader::ExecuteLoading()
             }
             default:
             {
-                LOG(INFO) << "Unsupported light: " << light->mType;
+                LOG(WARNING) << "Unsupported light: " << light->mType;
             }
         }
     }
+}
+
+void MeshLoader::LoadMeshes(const aiScene* scene)
+{
+    for (size_t i = 0; i < scene->mNumMeshes; ++i)
+    {
+    }
+}
+
+void MeshLoader::ExecuteLoading()
+{
+    Assimp::Importer importer;
+    const aiScene* scene = importer.ReadFile("test.blend",
+                                             aiProcess_Triangulate);
+    if (!scene)
+    {
+        LOG(LERROR) << "Import failed: " << importer.GetErrorString();
+    }
+    
+    LOG(INFO) << "Num meshes: " << scene->mNumMeshes;
+    LOG(INFO) << "Num lights: " << scene->mNumLights;
+    LOG(INFO) << "Num cameras " << scene->mNumCameras;
+
+    LoadLights(scene);
+    LoadMeshes(scene);
 }

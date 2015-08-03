@@ -2,6 +2,7 @@
 #include <string>
 
 class World;
+class aiScene;
 
 class MeshLoader
 {
@@ -11,4 +12,7 @@ public:
 private:
     std::string filename;
     World* world;
+    
+    void LoadLights(const aiScene* scene);
+    void LoadMeshes(const aiScene* scene);
 };
