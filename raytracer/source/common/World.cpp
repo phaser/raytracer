@@ -16,6 +16,7 @@
 #include <glm/ext.hpp>
 #include <AssetStore.h>
 #include <qui/Log.h>
+#include <MeshLoader.h>
 
 World::World()
     : ambient_ptr(nullptr)
@@ -70,7 +71,9 @@ void World::RenderScene()
 /** \brief The build function is used to create all the objects in the scene. */
 void World::Build()
 {
-#include <scenes/Scene_MultiObject.h>
+    MeshLoader ml("test.blend", this);
+    ml.ExecuteLoading();
+    #include <scenes/Scene_Blender.h>
 }
 
 /** \brief It is a separate function because it should be used to perform gamma correction. Right now
