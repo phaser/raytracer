@@ -6,6 +6,7 @@
 #include <qui/Log.h>
 #include <lights/PointLight.h>
 #include <World.h>
+#include <geom/AssimpMesh.h>
 
 MeshLoader::MeshLoader(const std::string& filename, World* world)
     : filename(filename)
@@ -64,6 +65,8 @@ void MeshLoader::LoadMeshes(const aiScene* scene)
 {
     for (size_t i = 0; i < scene->mNumMeshes; ++i)
     {
+        AssimpMesh *object = new AssimpMesh(scene, scene->mMeshes[i]);
+        world->AddObject(object);
     }
 }
 
