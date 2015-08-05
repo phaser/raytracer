@@ -1,5 +1,6 @@
 #pragma once
 #include <geom/GeometricObject.h>
+#include <glm/glm.hpp>
 
 class aiMesh;
 class aiScene;
@@ -14,4 +15,6 @@ private:
     const aiScene *scene;
     aiMesh *mesh;
     static const double kEpsilon;
+    
+    bool IsPointInsideTriangle(const glm::vec3& P, const glm::vec3& normal, const glm::vec3& v0, const glm::vec3& v1, const glm::vec3& v2) const;
 };
