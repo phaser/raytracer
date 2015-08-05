@@ -40,9 +40,6 @@ bool AssimpMesh::Hit(const Ray& ray, double& tmin, HitRec& hr) const
         aiVectorToGlm(v0, transformMat * mesh->mVertices[mesh->mFaces[i].mIndices[0]]);
         aiVectorToGlm(v1, transformMat * mesh->mVertices[mesh->mFaces[i].mIndices[1]]);
         aiVectorToGlm(v2, transformMat * mesh->mVertices[mesh->mFaces[i].mIndices[2]]);
-//        LOG(INFO) << "v0: " << v0.x << " " << v0.y << " " << v0.z;
-//        LOG(INFO) << "v1: " << v1.x << " " << v1.y << " " << v1.z;
-//        LOG(INFO) << "v2: " << v2.x << " " << v2.y << " " << v2.z;
         glm::vec3 normal;
         glm::vec3 v0v1 = v1 - v0;
         glm::vec3 v0v2 = v2 - v0;
