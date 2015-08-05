@@ -9,6 +9,7 @@ class ImageBufferPNG;
 class ViewPlane;
 class RayTracer;
 class GeometricObject;
+class MeshLoader;
 
 class World
 {
@@ -36,6 +37,7 @@ private:
     RGBColor backColor;
     std::vector<GeometricObject*> objects;
     std::vector<Light*> lights;
-
+    MeshLoader *meshLoader;
+    
     void DisplayPixel(uint16_t i, uint16_t j, const RGBColor& color);
 };

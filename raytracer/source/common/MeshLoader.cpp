@@ -11,7 +11,13 @@
 MeshLoader::MeshLoader(const std::string& filename, World* world)
     : filename(filename)
     , world(world)
+    , importer(nullptr)
 {
+}
+
+MeshLoader::~MeshLoader()
+{
+    delete importer;
 }
 
 void MeshLoader::LoadLights(const aiScene *scene)
@@ -66,18 +72,19 @@ void MeshLoader::LoadMeshes(const aiScene* scene)
     for (size_t i = 0; i < scene->mNumMeshes; ++i)
     {
         AssimpMesh *object = new AssimpMesh(scene, scene->mMeshes[i]);
+        object->SetMaterial("PhongMaterial");
         world->AddObject(object);
     }
 }
 
 void MeshLoader::ExecuteLoading()
 {
-    Assimp::Importer importer;
-    const aiScene* scene = importer.ReadFile("test.blend",
+    importer = new Assimp::Importer();
+    const aiScene* scene = importer->ReadFile("test.blend",
                                              aiProcess_Triangulate);
     if (!scene)
     {
-        LOG(LERROR) << "Import failed: " << importer.GetErrorString();
+        LOG(LERROR) << "Import failed: " << importer->GetErrorString();
     }
     
     LOG(INFO) << "Num meshes: " << scene->mNumMeshes;

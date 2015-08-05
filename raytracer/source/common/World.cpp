@@ -25,6 +25,7 @@ World::World()
     , imgBuffer(nullptr)
     , vp(nullptr)
     , backColor(RGBColor::black)
+    , meshLoader(nullptr)
 {    
 }
 
@@ -33,6 +34,7 @@ World::~World()
     delete imgBuffer;
     delete vp;
     delete ambient_ptr;
+    delete meshLoader;
 }
 
 World& World::SetOutputFilename(const char* outputfile)
@@ -71,9 +73,9 @@ void World::RenderScene()
 /** \brief The build function is used to create all the objects in the scene. */
 void World::Build()
 {
-    MeshLoader ml("test.blend", this);
-    ml.ExecuteLoading();
     #include <scenes/Scene_Blender.h>
+    meshLoader = new MeshLoader("test.blend", this);
+    meshLoader->ExecuteLoading();
 }
 
 /** \brief It is a separate function because it should be used to perform gamma correction. Right now

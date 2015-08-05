@@ -13,4 +13,5 @@ public:
 private:
     const aiScene *scene;
     aiMesh *mesh;
+    static const double kEpsilon;
 };
