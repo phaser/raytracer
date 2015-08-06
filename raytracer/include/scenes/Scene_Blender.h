@@ -29,7 +29,6 @@ light->SetLocation(glm::vec3(-200.f, -200.f, 200.f));
 light->SetColor(RGBColor(glm::vec3(0.f, 1.f, 0.f)));
 this->AddLight(light);
 
-
 Phong* sphere_material = new Phong();
 Lambertian* ambient_mat = new Lambertian();
 Lambertian* diffuse_mat = new Lambertian();
