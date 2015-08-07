@@ -67,22 +67,21 @@ bool AssimpMesh::Hit(const Ray& ray, double& tmin, HitRec& hr) const
             aiVectorToGlm(n1, mesh->mNormals[mesh->mFaces[i].mIndices[1]]);
             aiVectorToGlm(n2, mesh->mNormals[mesh->mFaces[i].mIndices[2]]);
  
-            float l0 = (P - v0).length();
-            float l1 = (P - v1).length();
-            float l2 = (P - v2).length();
-            float total = l0 + l1 + l2;
-            l0 /= total; l1 /= total; l2 /= total;
-            l0 = 1.f - l0; l1 = 1.f - l1; l2 = 1.f -l2;
+            float totalArea = glm::length(glm::cross(v0 - v1, v0 - v2));
+            float l0 = glm::length(glm::cross(P - v1, P - v2)) / totalArea;
+            float l1 = glm::length(glm::cross(P - v2, P - v0)) / totalArea;
+            float l2 = glm::length(glm::cross(P - v0, P - v1)) / totalArea;
             hr.normal = n0 * l0 + n1 * l1 + n2 * l2;
-            hr.normal = glm::normalize(normal);
             hr.hitPoint = P;
-            glm::vec3 uv0, uv1, uv2;
-            aiVectorToGlm(uv0, mesh->mTextureCoords[0][mesh->mFaces[i].mIndices[0]]);
-            aiVectorToGlm(uv1, mesh->mTextureCoords[0][mesh->mFaces[i].mIndices[1]]);
-            aiVectorToGlm(uv2, mesh->mTextureCoords[0][mesh->mFaces[i].mIndices[1]]);
-            glm::vec3 uv = uv0 * l0 + uv1 * l1 + uv2 * l2;
-            uv = glm::normalize(uv);
-            hr.uv = glm::vec2(uv.x, uv.y);
+            if (mesh->HasTextureCoords(0))
+            {
+                glm::vec3 uv0, uv1, uv2;
+                aiVectorToGlm(uv0, mesh->mTextureCoords[0][mesh->mFaces[i].mIndices[0]]);
+                aiVectorToGlm(uv1, mesh->mTextureCoords[0][mesh->mFaces[i].mIndices[1]]);
+                aiVectorToGlm(uv2, mesh->mTextureCoords[0][mesh->mFaces[i].mIndices[2]]);
+                glm::vec3 uv = uv0 * l0 + uv1 * l1 + uv2 * l2;
+                hr.uv = glm::vec2(uv.x, uv.y);
+            }
             //LOG(INFO) << "Hit: " << P.x << " " << P.y << " " << P.z;
             intersects = true;
         }

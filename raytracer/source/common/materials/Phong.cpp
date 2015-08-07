@@ -25,15 +25,10 @@ Phong::~Phong()
 RGBColor Phong::shade(HitRec& hr)
 {
     glm::vec3 wo = -hr.ray.d;
-    RGBColor L;
+    RGBColor L(glm::vec3(0));
     if (png == nullptr)
     {
         L = ambient_brdf->rho(hr, wo) * hr.world.ambient_ptr->L(hr);
-    } else
-    {
-        float u = png->GetWidth() * hr.uv.x;
-        float v = png->GetHeight() * hr.uv.y;
-        L = png->GetPixel((int)u, (int)v) * hr.world.ambient_ptr->L(hr);
     }
     
     size_t num_lights = hr.world.GetLights().size();
@@ -50,8 +45,20 @@ RGBColor Phong::shade(HitRec& hr)
             
             if (!inShadow)
             {
-                RGBColor col = diffuse_brdf->f(hr, wi, wo) + specular_brdf->f(hr, wi, wo);
-                L += col * hr.world.GetLights()[i]->L(hr) * ndotwi;
+                RGBColor col;
+                if (png == nullptr)
+                {
+                    col = diffuse_brdf->f(hr, wi, wo) + specular_brdf->f(hr, wi, wo);
+                    L += col * hr.world.GetLights()[i]->L(hr) * ndotwi;
+                } else
+                {
+                    float u = png->GetWidth() * hr.uv.x;
+                    float v = png->GetHeight() * hr.uv.y;
+                    diffuse_brdf->SetCd(png->GetPixel((int)u, (int)v));
+                    col = diffuse_brdf->f(hr, wi, wo) + specular_brdf->f(hr, wi, wo);
+                    L += col * hr.world.GetLights()[i]->L(hr) * ndotwi;
+                }
+ 
             }
         }
     }

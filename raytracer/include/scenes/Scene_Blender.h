@@ -15,18 +15,18 @@ Ambient* ambient_light = new Ambient();
 this->ambient_ptr = ambient_light;
 
 PointLight* light = new PointLight();
-light->SetLocation(glm::vec3(0.f, -10.f, 100.f));
+light->SetLocation(glm::vec3(50.f, -50.f, 100.f));
 this->AddLight(light);
 light = new PointLight();
-light->SetLocation(glm::vec3(-200.f, -200.f, 200.f));
+light->SetLocation(glm::vec3(-50.f, -50.f, 100.f));
 light->SetColor(RGBColor(glm::vec3(0.f, 0.f, 1.f)));
 this->AddLight(light);
 light = new PointLight();
-light->SetLocation(glm::vec3(-200.f, -200.f, 200.f));
+light->SetLocation(glm::vec3(-50.f, -50.f, 100.f));
 light->SetColor(RGBColor(glm::vec3(0.f, 1.f, 1.f)));
 this->AddLight(light);
 light = new PointLight();
-light->SetLocation(glm::vec3(-200.f, -200.f, 200.f));
+light->SetLocation(glm::vec3(-50.f, -50.f, 100.f));
 light->SetColor(RGBColor(glm::vec3(0.f, 1.f, 0.f)));
 this->AddLight(light);
 
@@ -34,11 +34,11 @@ Phong* sphere_material = new Phong();
 Lambertian* ambient_mat = new Lambertian();
 Lambertian* diffuse_mat = new Lambertian();
 GlossySpecular* specular_mat = new GlossySpecular();
-ImageBufferPNG *png = new ImageBufferPNG();
-if (png->LoadFromFile("test.png"))
-{
-    sphere_material->SetTexture(png);
-}
+//ImageBufferPNG *png = new ImageBufferPNG();
+//if (png->LoadFromFile("test.png"))
+//{
+//    sphere_material->SetTexture(png);
+//}
 ambient_mat->SetCd(RGBColor(glm::vec3(1.f, 0.f, 0.f)));
 ambient_mat->SetKd(ambient_kd);
 diffuse_mat->SetCd(RGBColor(glm::vec3(0.f, 1.f, 0.f)));
