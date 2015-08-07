@@ -4,18 +4,38 @@
 #include <brdf/Lambertian.h>
 #include <brdf/GlossySpecular.h>
 #include <glm/glm.hpp>
+#include <ImageBufferPNG.h>
 
 Phong::Phong()
 : ambient_brdf(nullptr)
 , diffuse_brdf(nullptr)
 , specular_brdf(nullptr)
+, png(nullptr)
 {
+}
+
+Phong::~Phong()
+{
+    delete ambient_brdf;
+    delete diffuse_brdf;
+    delete specular_brdf;
+    delete png;
 }
 
 RGBColor Phong::shade(HitRec& hr)
 {
     glm::vec3 wo = -hr.ray.d;
-    RGBColor L = ambient_brdf->rho(hr, wo) * hr.world.ambient_ptr->L(hr);
+    RGBColor L;
+    if (png == nullptr)
+    {
+        L = ambient_brdf->rho(hr, wo) * hr.world.ambient_ptr->L(hr);
+    } else
+    {
+        float u = png->GetWidth() * hr.uv.x;
+        float v = png->GetHeight() * hr.uv.y;
+        L = png->GetPixel((int)u, (int)v) * hr.world.ambient_ptr->L(hr);
+    }
+    
     size_t num_lights = hr.world.GetLights().size();
     for (int i = 0; i < num_lights; ++i)
     {
@@ -65,5 +85,15 @@ Phong& Phong::SetSpecular(GlossySpecular* specular)
         delete this->specular_brdf;
     }
     this->specular_brdf = specular;
+    return *this;
+}
+
+Phong& Phong::SetTexture(ImageBufferPNG *png)
+{
+    if (this->png != nullptr)
+    {
+        delete this->png;
+    }
+    this->png = png;
     return *this;
 }

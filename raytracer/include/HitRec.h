@@ -11,6 +11,7 @@ public:
     glm::vec3   normal;        /**< normal at hit point */
     World&      world;         /**< Reference to World */
     Ray         ray;           /**< Reference to Ray */
+    glm::vec2   uv;            /**< UV mapping */
     
     explicit HitRec(World& w);
     HitRec(const HitRec& co);

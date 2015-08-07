@@ -8,7 +8,8 @@ vp->SetWidth(640)
 vp->SetFocalDistance(800.f);
 LOG(INFO) << "Jitter Sampler with 64 samples per pixel.";
 vp->SetSamplerPtr(new Jitter(4));
-imgBuffer = new ImageBufferPNG(vp->GetWidth(), vp->GetHeight());
+imgBuffer = new ImageBufferPNG();
+imgBuffer->AllocImage(vp->GetWidth(), vp->GetHeight());
 tracerPtr = new MultiObjects(this);
 Ambient* ambient_light = new Ambient();
 this->ambient_ptr = ambient_light;
@@ -33,6 +34,11 @@ Phong* sphere_material = new Phong();
 Lambertian* ambient_mat = new Lambertian();
 Lambertian* diffuse_mat = new Lambertian();
 GlossySpecular* specular_mat = new GlossySpecular();
+ImageBufferPNG *png = new ImageBufferPNG();
+if (png->LoadFromFile("test.png"))
+{
+    sphere_material->SetTexture(png);
+}
 ambient_mat->SetCd(RGBColor(glm::vec3(1.f, 0.f, 0.f)));
 ambient_mat->SetKd(ambient_kd);
 diffuse_mat->SetCd(RGBColor(glm::vec3(0.f, 1.f, 0.f)));

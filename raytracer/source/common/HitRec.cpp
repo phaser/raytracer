@@ -20,5 +20,6 @@ HitRec& HitRec::operator=(const HitRec& co)
     this->hitPoint = co.hitPoint;
     this->normal = co.normal;
     this->ray = co.ray;
+    this->uv = co.uv;
     return *this;
 }
