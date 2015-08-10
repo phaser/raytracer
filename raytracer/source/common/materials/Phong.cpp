@@ -29,6 +29,11 @@ RGBColor Phong::shade(HitRec& hr)
     if (png == nullptr)
     {
         L = ambient_brdf->rho(hr, wo) * hr.world.ambient_ptr->L(hr);
+    } else {
+        float u = png->GetWidth() * hr.uv.x;
+        float v = png->GetHeight() * hr.uv.y;
+        ambient_brdf->SetCd(png->GetPixel((int)u, (int)v));
+        L = ambient_brdf->rho(hr, wo) * hr.world.ambient_ptr->L(hr);
     }
     
     size_t num_lights = hr.world.GetLights().size();
