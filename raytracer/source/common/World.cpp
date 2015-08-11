@@ -17,6 +17,7 @@
 #include <AssetStore.h>
 #include <qui/Log.h>
 #include <MeshLoader.h>
+#include <thread>
 
 World::World()
     : ambient_ptr(nullptr)
@@ -26,6 +27,7 @@ World::World()
     , vp(nullptr)
     , backColor(RGBColor::black)
     , meshLoader(nullptr)
+    , finishedThreads(0)
 {    
 }
 
@@ -48,24 +50,44 @@ const std::string& World::GetOutputFilename()
     return this->outputFileName;
 }
 
+void World::RenderLines(size_t b, size_t e)
+{
+    RGBColor pixel_color(glm::vec3(0.f, 0.f, 0.f));
+    Ray ray;
+
+    for (int i = b; i < e; i++)
+    {
+        for (int j = 0; j < vp->GetHeight(); j++)
+        {
+            size_t sz = (vp->GetSamplerPtr() != nullptr ? vp->GetSamplerPtr()->GetNumSamples() : 1);
+            pixel_color = glm::vec3(0.f, 0.f, 0.f);
+            for (int k = 0; k < sz; ++k)
+            {
+                pixel_color += tracerPtr->TraceRay(vp->GenerateRay(i, j));
+            }
+            pixel_color /= sz;
+            DisplayPixel(i, j, pixel_color);
+        }
+    }
+}
+
 void World::RenderScene()
 {
     LOG(INFO) << "ViewPlane: " << vp->GetWidth() << "x" << vp->GetHeight();
     LOG(INFO) << "Output file: " << outputFileName;
-    RGBColor pixel_color(glm::vec3(0.f, 0.f, 0.f));
-    Ray ray;
     
-    for (int i = 0; i < vp->GetWidth(); i++)
-    for (int j = 0; j < vp->GetHeight(); j++)
+    uint8_t num_threads = 8;
+    uint16_t int_length = vp->GetWidth() / num_threads;
+    for (int i = 0; i < num_threads; i++)
     {
-        size_t sz = (vp->GetSamplerPtr() != nullptr ? vp->GetSamplerPtr()->GetNumSamples() : 1);
-        pixel_color = glm::vec3(0.f, 0.f, 0.f);
-        for (int k = 0; k < sz; ++k)
-        {
-            pixel_color += tracerPtr->TraceRay(vp->GenerateRay(i, j));
-        }
-        pixel_color /= sz;
-        DisplayPixel(i, j, pixel_color);
+        threads.push_back(std::thread ([i, int_length, this] {
+            this->RenderLines(i * int_length, (i+1) * int_length);
+            finishedThreads++;
+        }));
+        threads[threads.size() - 1].detach();
+    }
+    while (finishedThreads < num_threads)
+    {
     }
     imgBuffer->SaveToPngFile(outputFileName.c_str());
 }

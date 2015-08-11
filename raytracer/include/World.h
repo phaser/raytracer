@@ -4,6 +4,7 @@
 #include <geom/Sphere.h>
 #include <vector>
 #include <lights/Light.h>
+#include <thread>
 
 class ImageBufferPNG;
 class ViewPlane;
@@ -38,6 +39,9 @@ private:
     std::vector<GeometricObject*> objects;
     std::vector<Light*> lights;
     MeshLoader *meshLoader;
+    std::vector<std::thread> threads;
+    std::atomic_uint finishedThreads;
     
+    void RenderLines(size_t b, size_t e);
     void DisplayPixel(uint16_t i, uint16_t j, const RGBColor& color);
 };

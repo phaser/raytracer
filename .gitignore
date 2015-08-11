@@ -29,3 +29,5 @@
 
 projects
 CMakeLists.txt.user
+
+.DS_Store
