@@ -76,12 +76,18 @@ void World::RenderScene()
     LOG(INFO) << "ViewPlane: " << vp->GetWidth() << "x" << vp->GetHeight();
     LOG(INFO) << "Output file: " << outputFileName;
     
-    uint8_t num_threads = 8;
+    uint8_t num_threads = 12;
     uint16_t int_length = vp->GetWidth() / num_threads;
     for (int i = 0; i < num_threads; i++)
     {
-        threads.push_back(std::thread ([i, int_length, this] {
-            this->RenderLines(i * int_length, (i+1) * int_length);
+        threads.push_back(std::thread ([i, int_length, this, num_threads] {
+            if (i == num_threads-1)
+            {
+                this->RenderLines(i * int_length, vp->GetWidth());
+            } else
+            {
+                this->RenderLines(i * int_length, (i+1) * int_length);
+            }
             finishedThreads++;
         }));
         threads[threads.size() - 1].detach();

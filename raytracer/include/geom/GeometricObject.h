@@ -29,7 +29,7 @@ public:
     virtual bool Hit(const Ray& ray, double& tmin, HitRec& hr) const =0;
     virtual std::string& GetMaterial();
     virtual GeometricObject& SetMaterial(const std::string& material);
-    virtual bool DidShadowHit(const Ray& ray, float& t) =0;
+    virtual bool DidShadowHit(const Ray& ray, double& t) =0;
 protected:
     std::string material;
 };

@@ -15,13 +15,13 @@ class Plane : public GeometricObject
 {
 public:
     Plane(const glm::vec3& point, const glm::vec3& norm);
-    bool Hit(const Ray& ray, double& tmin, HitRec& hr) const;
-    bool DidShadowHit(const Ray& ray, float& t);
+    bool Hit(const Ray& ray, double& tmin, HitRec& hr) const override;
+    bool DidShadowHit(const Ray& ray, double& t) override;
 
 private:
     glm::vec3 norm;
     glm::vec3 point;
     static const double kEpsilon;
-    bool RayIntersects(const Ray& ray, float& tmin) const;
+    bool RayIntersects(const Ray& ray, double& tmin) const;
 };
 

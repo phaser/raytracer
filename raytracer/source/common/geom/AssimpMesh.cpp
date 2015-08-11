@@ -89,9 +89,11 @@ bool AssimpMesh::Hit(const Ray& ray, double& tmin, HitRec& hr) const
     return intersects;
 }
 
-bool AssimpMesh::DidShadowHit(const Ray& ray, float& t)
+bool AssimpMesh::DidShadowHit(const Ray& ray, double& t)
 {
-    return false;
+    World w;
+    HitRec hr(w);
+    return Hit(ray, t, hr);
 }
 
 bool AssimpMesh::IsPointInsideTriangle(const glm::vec3& P, const glm::vec3& normal, const glm::vec3& v0, const glm::vec3& v1, const glm::vec3& v2) const

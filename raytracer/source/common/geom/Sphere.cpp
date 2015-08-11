@@ -56,7 +56,7 @@ void Sphere::SetRadius(double radius)
     this->radius = radius;
 }
 
-bool Sphere::DidShadowHit(const Ray& ray, float& tmin)
+bool Sphere::DidShadowHit(const Ray& ray, double& tmin)
 {
     double t;
     glm::vec3 temp = ray.o - center;

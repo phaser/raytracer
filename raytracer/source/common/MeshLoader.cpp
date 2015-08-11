@@ -73,6 +73,7 @@ void MeshLoader::LoadMeshes(const aiScene* scene)
     {
         AssimpMesh *object = new AssimpMesh(scene, scene->mMeshes[i]);
         object->SetMaterial("PhongMaterial");
+        LOG(INFO) << "Num textures: " << scene->mNumTextures;
         world->AddObject(object);
     }
 }

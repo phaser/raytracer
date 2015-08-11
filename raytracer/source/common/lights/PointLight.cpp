@@ -55,7 +55,7 @@ glm::vec3 PointLight::GetLocation() const
 
 bool PointLight::IsInShadow(const Ray& ray, const HitRec& hr) const
 {
-    float t;
+    double t;
     size_t num_objects = hr.world.GetObjects().size();
     float d = glm::distance(location, ray.o);
     for (size_t i = 0; i < num_objects; ++i)
