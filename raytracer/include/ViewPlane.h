@@ -23,8 +23,8 @@ private:
     uint16_t width;
     uint16_t height;
     float s;
-    float gamma;
-    float inv_gamma;
+//    float gamma;
+//    float inv_gamma;
     float focalDistance;        /**< The point in the back of the viewplane where rays originate */
     Sampler* sampler_ptr;
 };

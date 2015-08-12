@@ -2,8 +2,8 @@
 #include <geom/GeometricObject.h>
 #include <glm/glm.hpp>
 
-class aiMesh;
-class aiScene;
+struct aiMesh;
+struct aiScene;
 
 class AssimpMesh : public GeometricObject
 {

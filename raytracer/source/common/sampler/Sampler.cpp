@@ -2,7 +2,7 @@
 
 Sampler::Sampler(uint16_t num_samples)
     : num_samples(num_samples)
-    , num_sets(1)
+    , num_sets(7)
     , count(0)
 {
 }

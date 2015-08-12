@@ -3,7 +3,7 @@
 #include <sampler/Sampler.h>
 
 ViewPlane::ViewPlane()
-    : width(320), height(240), s(1.f), gamma(1.f), inv_gamma(1.f), sampler_ptr(nullptr)
+    : width(320), height(240), s(1.f), sampler_ptr(nullptr)
 {
 }
 

@@ -2,7 +2,7 @@
 #include <string>
 
 class World;
-class aiScene;
+struct aiScene;
 namespace Assimp {
     class Importer;
 }

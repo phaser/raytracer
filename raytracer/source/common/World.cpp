@@ -101,9 +101,7 @@ void World::RenderScene()
 /** \brief The build function is used to create all the objects in the scene. */
 void World::Build()
 {
-    #include <scenes/Scene_Blender.h>
-    meshLoader = new MeshLoader("test.blend", this);
-    meshLoader->ExecuteLoading();
+#include <scenes/Scene_DancingSpheres.h>
 }
 
 /** \brief It is a separate function because it should be used to perform gamma correction. Right now
