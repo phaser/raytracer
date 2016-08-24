@@ -7,7 +7,7 @@ class Sphere : public GeometricObject
 {
 public:
     RGBColor baseColor;
-    bool Hit(const Ray& ray, double& tmin, HitRec& hr) const;
+    bool Hit(const Ray& ray, double& tmin, HitRec& hr) const override;
     void SetCenter(const glm::vec3& center);
     void SetRadius(double radius);
     bool DidShadowHit(const Ray& ray, double& t) override;

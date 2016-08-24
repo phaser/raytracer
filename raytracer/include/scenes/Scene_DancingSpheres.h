@@ -56,8 +56,21 @@ for (int i = 0; i < sz; ++i)
     this->AddObject(msphere);
 }
 
+sphere_material = new Phong();
+ambient_mat = new Lambertian();
+diffuse_mat = new Lambertian();
+specular_mat = new GlossySpecular();
+ambient_mat->SetCd(RGBColor(glm::vec3(0.3f, 0.3f, 0.3f)));
+ambient_mat->SetKd(ambient_kd);
+diffuse_mat->SetCd(RGBColor(glm::vec3(0.3f, 0.3f, 0.3f)));
+sphere_material->SetAmbient(ambient_mat);
+sphere_material->SetDiffuse(diffuse_mat);
+sphere_material->SetSpecular(specular_mat);
+sphere_material->SetCheckered(true);
+AssetStore::Instance().GetMaterials().store(qui::Hash("PlaneMaterial").value, std::shared_ptr<Material>(sphere_material));
+
 Plane* plane = new Plane(glm::vec3(0.f, 50.f, -10.f), glm::vec3(0.f, -1.0f, 0.f));
-plane->SetMaterial("PhongMaterial");
+plane->SetMaterial("PlaneMaterial");
 this->AddObject(plane);
 
 outputFileName = "DancingSpheres.png";

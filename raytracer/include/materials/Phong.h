@@ -15,9 +15,11 @@ public:
     Phong& SetDiffuse(Lambertian* diffuse);
     Phong& SetSpecular(GlossySpecular* specular);
     Phong& SetTexture(ImageBufferPNG *png);
+    Phong& SetCheckered(bool);
 private:
     Lambertian* ambient_brdf;
     Lambertian* diffuse_brdf;
     GlossySpecular* specular_brdf;
     ImageBufferPNG *png;
+    bool checkered;
 };

@@ -11,6 +11,7 @@ Phong::Phong()
 , diffuse_brdf(nullptr)
 , specular_brdf(nullptr)
 , png(nullptr)
+, checkered(false)
 {
 }
 
@@ -24,11 +25,32 @@ Phong::~Phong()
 
 RGBColor Phong::shade(HitRec& hr)
 {
+#define UNIT 50
+#define HALF_UNIT 25
     glm::vec3 wo = -hr.ray.d;
     RGBColor L(glm::vec3(0));
     if (png == nullptr)
     {
-        L = ambient_brdf->rho(hr, wo) * hr.world.ambient_ptr->L(hr);
+        float intensity = 1.f;
+        if (checkered)
+        {
+            glm::vec3 mhp;
+            mhp.x = (int)glm::abs((int)hr.hitPoint.x % UNIT);
+            mhp.y = (int)glm::abs((int)hr.hitPoint.y % UNIT);
+            mhp.z = (int)glm::abs((int)hr.hitPoint.z % UNIT);
+            bool cond = (glm::abs((int)mhp.x / HALF_UNIT) % 2) != (glm::abs((int)mhp.z / HALF_UNIT) % 2);
+            bool cond2 = ((int)glm::abs(mhp.x) < HALF_UNIT || (int)glm::abs(mhp.z) < HALF_UNIT);
+            bool cond3 = cond && cond2;
+            if (hr.hitPoint.x < 0)
+            {
+                cond3 = !cond3;
+            }
+            if (cond3)
+            {
+                intensity = 1.5f;
+            }
+        }
+        L = ambient_brdf->rho(hr, wo) * hr.world.ambient_ptr->L(hr) * intensity;
     } else {
         float u = png->GetWidth() * hr.uv.x;
         float v = png->GetHeight() * hr.uv.y;
@@ -107,5 +129,11 @@ Phong& Phong::SetTexture(ImageBufferPNG *png)
         delete this->png;
     }
     this->png = png;
+    return *this;
+}
+
+Phong& Phong::SetCheckered(bool value)
+{
+    checkered = value;
     return *this;
 }
