@@ -3,7 +3,7 @@
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
-#include <qui/Log.h>
+#include <qui/log.h>
 #include <lights/PointLight.h>
 #include <World.h>
 #include <geom/AssimpMesh.h>

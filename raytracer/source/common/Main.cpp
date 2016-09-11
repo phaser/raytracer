@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <tracer/RayTracer.h>
 #include <World.h>
-#include <qui/Log.h>
+#include <qui/log.h>
 #include <time.h>
 
 int main(int argc, char** argv)
