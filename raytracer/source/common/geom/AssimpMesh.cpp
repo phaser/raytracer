@@ -1,3 +1,4 @@
+/*
 #include <geom/AssimpMesh.h>
 #include <assimp/scene.h>
 #include <qui/log.h>
@@ -120,3 +121,4 @@ bool AssimpMesh::IsPointInsideTriangle(const glm::vec3& P, const glm::vec3& norm
  
     return true;
 }
+*/

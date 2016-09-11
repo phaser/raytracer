@@ -16,7 +16,7 @@
 #include <glm/ext.hpp>
 #include <AssetStore.h>
 #include <qui/log.h>
-#include <MeshLoader.h>
+//#include <MeshLoader.h>
 #include <thread>
 
 World::World()
